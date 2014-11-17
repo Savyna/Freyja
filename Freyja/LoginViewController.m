@@ -45,10 +45,14 @@
 
 - (IBAction)loginButtonPressed:(UIButton *)sender
 {
+    // Unhide the activity indicator and start animating it
     self.activityIndicator.hidden = NO;
     [self.activityIndicator startAnimating];
+    
+    // Create an array with the information we will request access to from our user.
     NSArray *permissionsArray = @[@"user_about_me", @"user_interests", @"user_relationships", @"user_birthday", @"user_location", @"user_relationship_details"];
     
+    // Use PFFacebookUtilis to request permission to login with facebook.
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         [self.activityIndicator stopAnimating];
         self.activityIndicator.hidden = YES;
@@ -63,6 +67,7 @@
             }
         }
         else {
+            // If the sign in is successful we update the users information and perform the segue to the TabBar Controller in the completion block.
             [self updateUserInformation];
             [self performSegueWithIdentifier:@"loginToTabBarSegue" sender:self];
         }
@@ -73,10 +78,13 @@
 
 - (void)updateUserInformation
 {
+    // Issue a request to Facebook for the information we asked for access to in the permissions array
     FBRequest *request = [FBRequest requestForMe];
     
+    // Start the request to Facebook
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if ( !error ) {
+            // If we do not get an error in our Facebook request we use its information to create an NSMutableDictionary named userProfile
             NSDictionary *userDictionary = (NSDictionary *)result;
             
             // create URL
@@ -110,8 +118,11 @@
                 userProfile[kUserProfilePictureURL] = [pictureURL absoluteString];
             }
             
+            // Save the userProfile dictionary as the value for the key kUserProfileKey
             [[PFUser currentUser] setObject:userProfile forKey:kUserProfileKey];
             [[PFUser currentUser] saveInBackground];
+            
+            [self requestImage];
         }
         else {
             NSLog(@"Error in FB request %@", error);
@@ -134,10 +145,12 @@
         return;
     }
     
-    // PFFile photoFile to be stored in Parse
+    // Create a PFFile with the NSData object to be stored in Parse
     PFFile *photoFile = [PFFile fileWithData:imageData];
     [photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if ( succeeded ) {
+            
+            // Create a PFObject of class Photo. Set the current user for its' user key and set the PFFile for its image key.
             NSLog(@"Photo uploaded successfully");
             PFObject *photo = [PFObject objectWithClassName:kPhotoClassKey];
             [photo setObject:[PFUser currentUser] forKey:kPhotoUserKey];
@@ -153,18 +166,24 @@
 // Request our image from Parse
 - (void)requestImage
 {
+    // Create a query for the Photo class. Then constrain the query to search for only Photos for the current user. Finally, ask for the count of the number of Photos for the current user
     PFQuery *query = [PFQuery queryWithClassName:kPhotoClassKey];
     [query whereKey:kPhotoUserKey equalTo:[PFUser currentUser]];
     
     [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
         if ( number == 0 )
         {
+            // Access the current user and then allocate and initialize the NSMutableData property named imageData.
             PFUser *user = [PFUser currentUser];
             self.imageData = [[NSMutableData alloc] init];
             
+            // Create an NSURL object with the facebook picture URL we saved in the updateUserInformation method
             NSURL *profilePictureURL = [NSURL URLWithString:user[kUserProfileKey][kUserProfilePictureURL]];
             
+            // Create a URL request using the default cache policy and a timeout of 4.0.
             NSURLRequest *urlRequest = [NSURLRequest requestWithURL:profilePictureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:4.0f];
+            
+            // Make our request with NSURLConnection
             NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
             
             if ( !urlConnection ) {
@@ -172,6 +191,23 @@
             }
         }
     }];
+}
+
+// Method will recieve the data from facebook's API and we will build our property imageData with the data.
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    // As chuncks of the image are received, we build our data file
+    [self.imageData appendData:data];
+}
+
+// When the download finishes finishes upload the photo to Parse with the helper method uploadPFFileToParse.
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSLog(@"connectionDidFinishLoading");
+    
+    // All data has been downloaded, now we can set the image in the header image view
+    UIImage *profileImage = [UIImage imageWithData:self.imageData];
+    [self uploadPFFileToParse:profileImage];
 }
 
 @end
