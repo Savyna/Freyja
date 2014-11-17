@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "Constants.h"
-#import <Parse/PFFile.h>
+#import <Parse/Parse.h>
 
 @interface LoginViewController ()
 
@@ -85,8 +85,8 @@
             
             NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] initWithCapacity:8];
 
-//            Use this to log the response into the console.
-//            NSLog(@"%@", result);
+            // Use this to log the response into the console.
+            // NSLog(@"%@", result);
             
             if ( userDictionary[@"name"] ) {
                 userProfile[KUserProfileNameKey] = userDictionary[@"name"];
@@ -120,6 +120,8 @@
     }];
 }
 
+
+// Upload image file to Parse
 - (void)uploadPFFileToParse:(UIImage *)image
 {
     NSLog(@"upload called");
@@ -132,6 +134,7 @@
         return;
     }
     
+    // PFFile photoFile to be stored in Parse
     PFFile *photoFile = [PFFile fileWithData:imageData];
     [photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if ( succeeded ) {
@@ -145,6 +148,30 @@
         }
     }];
     
+}
+
+// Request our image from Parse
+- (void)requestImage
+{
+    PFQuery *query = [PFQuery queryWithClassName:kPhotoClassKey];
+    [query whereKey:kPhotoUserKey equalTo:[PFUser currentUser]];
+    
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if ( number == 0 )
+        {
+            PFUser *user = [PFUser currentUser];
+            self.imageData = [[NSMutableData alloc] init];
+            
+            NSURL *profilePictureURL = [NSURL URLWithString:user[kUserProfileKey][kUserProfilePictureURL]];
+            
+            NSURLRequest *urlRequest = [NSURLRequest requestWithURL:profilePictureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:4.0f];
+            NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+            
+            if ( !urlConnection ) {
+                NSLog(@"Failed to Download Picture");
+            }
+        }
+    }];
 }
 
 @end
