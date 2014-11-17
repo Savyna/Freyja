@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
+#import "Constants.h"
 
 @interface LoginViewController ()
 
@@ -77,29 +78,30 @@
         if ( !error ) {
             NSDictionary *userDictionary = (NSDictionary *)result;
             NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] initWithCapacity:8];
-            
-            NSLog(@"%@", result);
+
+//            Use this to log the response into the console.
+//            NSLog(@"%@", result);
             
             if ( userDictionary[@"name"] ) {
-                userProfile[@"name"] = userDictionary[@"name"];
+                userProfile[KUserProfileNameKey] = userDictionary[@"name"];
             }
             if ( userDictionary[@"first_name"]  ) {
-                userProfile[@"first_name"] = userDictionary[@"first_name"];
+                userProfile[KUserProfileFirstNameKey] = userDictionary[@"first_name"];
             }
             if ( userDictionary[@"location"][@"name"] ) {
-                userProfile[@"location"] = userDictionary[@"location"][@"name"];
+                userProfile[KUserProfileLocationKey] = userDictionary[@"location"][@"name"];
             }
             if ( userDictionary[@"gender"] ) {
-                userProfile[@"gender"] = userDictionary[@"gender"];
+                userProfile[KUserProfileGenderKey] = userDictionary[@"gender"];
             }
             if ( userDictionary[@"birthday"] ) {
-                userProfile[@"birthday"] = userDictionary[@"birthday"];
+                userProfile[KUserProfileBirthdayKey] = userDictionary[@"birthday"];
             }
             if ( userDictionary[@"interested_in"] ) {
-                userProfile[@"interested_in"] = userDictionary[@"interested_in"];
+                userProfile[KUserProfileInterestedInKey] = userDictionary[@"interested_in"];
             }
             
-            [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
+            [[PFUser currentUser] setObject:userProfile forKey:kUserProfileKey];
             [[PFUser currentUser] saveInBackground];
         }
         else {
