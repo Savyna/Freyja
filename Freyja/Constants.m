@@ -10,6 +10,8 @@
 
 @implementation Constants
 
+#pragma mark - User Class
+
 NSString *const kUserProfileKey                 = @"profile";
 NSString *const KUserProfileNameKey             = @"name";
 NSString *const KUserProfileFirstNameKey        = @"firstName";
@@ -17,5 +19,12 @@ NSString *const KUserProfileLocationKey         = @"location";
 NSString *const KUserProfileGenderKey           = @"gender";
 NSString *const KUserProfileBirthdayKey         = @"birthday";
 NSString *const KUserProfileInterestedInKey     = @"interestedIn";
+NSString *const kUserProfilePictureURL          = @"pictureURL";
+
+#pragma mark - Photo Class
+
+NSString *const kPhotoClassKey                  = @"Photo";
+NSString *const kPhotoUserKey                   = @"user";
+NSString *const kPhotoPictureKey                = @"image";
 
 @end

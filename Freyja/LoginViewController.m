@@ -9,11 +9,12 @@
 #import "LoginViewController.h"
 #import <ParseFacebookUtils/PFFacebookUtils.h>
 #import "Constants.h"
+#import <Parse/PFFile.h>
 
 @interface LoginViewController ()
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
+@property (strong, nonatomic) NSMutableData *imageData;
 
 @end
 
@@ -77,6 +78,11 @@
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if ( !error ) {
             NSDictionary *userDictionary = (NSDictionary *)result;
+            
+            // create URL
+            NSString *facebookID = userDictionary[@"id"];
+            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+            
             NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] initWithCapacity:8];
 
 //            Use this to log the response into the console.
@@ -100,6 +106,9 @@
             if ( userDictionary[@"interested_in"] ) {
                 userProfile[KUserProfileInterestedInKey] = userDictionary[@"interested_in"];
             }
+            if ( [pictureURL absoluteString] ) {
+                userProfile[kUserProfilePictureURL] = [pictureURL absoluteString];
+            }
             
             [[PFUser currentUser] setObject:userProfile forKey:kUserProfileKey];
             [[PFUser currentUser] saveInBackground];
@@ -109,6 +118,33 @@
         }
         
     }];
+}
+
+- (void)uploadPFFileToParse:(UIImage *)image
+{
+    NSLog(@"upload called");
+    
+    // JPEG to decrease file size and enable faster uploads & downloads
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
+    
+    if ( !imageData ) {
+        NSLog(@"imageData was not found.");
+        return;
+    }
+    
+    PFFile *photoFile = [PFFile fileWithData:imageData];
+    [photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if ( succeeded ) {
+            NSLog(@"Photo uploaded successfully");
+            PFObject *photo = [PFObject objectWithClassName:kPhotoClassKey];
+            [photo setObject:[PFUser currentUser] forKey:kPhotoUserKey];
+            [photo setObject:photoFile forKey:kPhotoPictureKey];
+            [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"Photo saved successfully");
+            }];
+        }
+    }];
+    
 }
 
 @end
