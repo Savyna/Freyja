@@ -26,6 +26,18 @@
     self.activityIndicator.hidden = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    // Method to check if the user is logged in, and if they are you can segue past login
+    if ( [PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]] ) {
+        
+        // If user changes his Facebook information, I want it to be reflected on my App
+        [self updateUserInformation];
+        [self performSegueWithIdentifier:@"loginToTabBarSegue" sender:self];
+        
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
