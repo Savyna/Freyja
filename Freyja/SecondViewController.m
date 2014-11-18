@@ -7,8 +7,12 @@
 //
 
 #import "SecondViewController.h"
+#import <Parse/Parse.h>
+#import "Constants.h"
 
 @interface SecondViewController ()
+
+@property (strong, nonatomic) IBOutlet UIImageView *profilePictureImageView;
 
 @end
 
@@ -17,6 +21,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    // Query current user picture
+    PFQuery *query = [PFQuery queryWithClassName:kPhotoClassKey];
+    [query whereKey:kPhotoUserKey equalTo:[PFUser currentUser]];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ( [objects count] > 0 ) {
+            
+            PFObject *photo = objects[0];
+            PFFile *pictureFile = photo[kPhotoPictureKey];
+            
+            // Get Photo from Parse and set the ImageView equals our user picture
+            [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                self.profilePictureImageView.image = [UIImage imageWithData:data];
+            }];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
