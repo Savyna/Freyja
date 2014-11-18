@@ -23,8 +23,11 @@
 
 @property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) PFObject *photo;
+@property (strong, nonatomic) NSMutableArray *activities;
 
 @property (nonatomic) int currentPhotoIndex;
+@property (nonatomic) BOOL isLikedByCurrentUser;
+@property (nonatomic) BOOL isDislikedByCurrentUser;
 
 @end
 
@@ -112,6 +115,7 @@
             if ( !error ) {
                 UIImage *image = [UIImage imageWithData:data];
                 self.photoImageView.image = image;
+                [self updateView];
             }
             else NSLog(@"%@", error);
         }];
@@ -119,10 +123,103 @@
     }
 }
 
+- (void)updateView
+{
+    self.firstNameLabel.text = self.photo[@"user"][@"profile"][@"firstName"];
+    self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[@"user"][@"profile"][@"age"]];
+    self.tagLineLabel.text = self.photo[@"user"][@"tagLine"];
+}
 
+- (void)setupNextPhoto
+{
+    if ( self.currentPhotoIndex +1 < self.photos.count ) {
+        self.currentPhotoIndex ++;
+        [self queryForCurrentPhotoIndex];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No More Users to View" message:@"Check back later for more people!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    }
+}
 
+- (void)saveLike
+{
+    // Creates a new class called Activity in Parse
+    PFObject *likeActivity = [PFObject objectWithClassName:@"Activity"];
+    
+    // Store the like in the background for the key type, the user from is doing the liking, adn the user who is being liked
+    // and the photo involved in the liking as well.
+    [likeActivity setObject:@"like" forKey:@"type"];
+    [likeActivity setObject:[PFUser currentUser] forKey:@"fromUser"];
+    [likeActivity setObject:[self.photo objectForKey:@"user"] forKey:@"toUser"];
+    [likeActivity setObject:self.photo forKey:@"photo"];
+    
+    [likeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        self.isLikedByCurrentUser = YES;
+        self.isDislikedByCurrentUser = NO;
+        [self.activities addObject:likeActivity];
+        
+        // Setup the next photo, and save the like of the current one to Parse
+        [self setupNextPhoto];
+    }];
+}
 
+- (void)saveDislike
+{
+    // Creates a new class called Activity in Parse
+    PFObject *dislikeActivity = [PFObject objectWithClassName:@"Activity"];
+    
+    // Store the dislike in the background for the key type, the user from is doing the disliking, adn the user who is being disliked
+    // and the photo involved in the disliking as well.
+    [dislikeActivity setObject:@"like" forKey:@"type"];
+    [dislikeActivity setObject:[PFUser currentUser] forKey:@"fromUser"];
+    [dislikeActivity setObject:[self.photo objectForKey:@"user"] forKey:@"toUser"];
+    [dislikeActivity setObject:self.photo forKey:@"photo"];
+    
+    [dislikeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        self.isLikedByCurrentUser = NO;
+        self.isDislikedByCurrentUser = YES;
+        [self.activities addObject:dislikeActivity];
+        
+        // Setup the next photo, and save the like of the current one to Parse
+        [self setupNextPhoto];
+    }];
+}
 
+- (void)checkLike
+{
+    if ( self.isLikedByCurrentUser ) {
+        [self setupNextPhoto];
+        return;
+    }
+    else if ( self.isDislikedByCurrentUser ) {
+        for ( PFObject *activity in self.activities ) {
+            [activity deleteInBackground];
+        }
+        [self.activities removeLastObject];
+        [self saveLike];
+    }
+    else {
+        [self saveLike];
+    }
+}
 
+- (void)checkDislike
+{
+    if ( self.isDislikedByCurrentUser ) {
+        [self setupNextPhoto];
+        return;
+    }
+    else if ( self.isLikedByCurrentUser ) {
+        for ( PFObject *activity in self.activities ) {
+            [activity deleteInBackground];
+        }
+        [self.activities removeLastObject];
+        [self saveDislike];
+    }
+    else {
+        [self saveDislike];
+    }
+}
 
 @end
