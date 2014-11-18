@@ -37,8 +37,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.likeButton.enabled = NO;
-    self.dislikeButton.enabled = NO;
+    //self.likeButton.enabled = NO;
+    //self.dislikeButton.enabled = NO;
     self.infoButton.enabled = NO;
     
     self.currentPhotoIndex = 0;
@@ -78,12 +78,12 @@
 
 - (IBAction)likeButtonPressed:(UIButton *)sender
 {
-    
+    [self checkLike];
 }
 
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
 {
-    
+    [self checkDislike];
 }
 
 - (IBAction)infoButtonPressed:(UIButton *)sender
@@ -171,7 +171,7 @@
     
     // Store the dislike in the background for the key type, the user from is doing the disliking, adn the user who is being disliked
     // and the photo involved in the disliking as well.
-    [dislikeActivity setObject:@"like" forKey:@"type"];
+    [dislikeActivity setObject:@"dislike" forKey:@"type"];
     [dislikeActivity setObject:[PFUser currentUser] forKey:@"fromUser"];
     [dislikeActivity setObject:[self.photo objectForKey:@"user"] forKey:@"toUser"];
     [dislikeActivity setObject:self.photo forKey:@"photo"];
