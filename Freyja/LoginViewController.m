@@ -33,7 +33,7 @@
         
         // If user changes his Facebook information, I want it to be reflected on my App
         [self updateUserInformation];
-        [self performSegueWithIdentifier:@"loginToTabBarSegue" sender:self];
+        [self performSegueWithIdentifier:@"loginToHomeSegue" sender:self];
         
     }
 }
@@ -79,9 +79,9 @@
             }
         }
         else {
-            // If the sign in is successful we update the users information and perform the segue to the TabBar Controller in the completion block.
+            // If the sign in is successful we update the users information and perform the segue to the Home Controller in the completion block.
             [self updateUserInformation];
-            [self performSegueWithIdentifier:@"loginToTabBarSegue" sender:self];
+            [self performSegueWithIdentifier:@"loginToHomeSegue" sender:self];
         }
     }];
 }
@@ -122,9 +122,19 @@
             }
             if ( userDictionary[@"birthday"] ) {
                 userProfile[KUserProfileBirthdayKey] = userDictionary[@"birthday"];
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                [formatter setDateStyle:NSDateFormatterShortStyle];
+                NSDate *date = [formatter dateFromString:userDictionary[@"birthday"]];
+                NSDate *now = [NSDate date];
+                NSTimeInterval seconds = [now timeIntervalSinceDate:date];
+                int age = seconds / 31536000;
+                userProfile[kUserProfileAgeKey] = @(age);
             }
             if ( userDictionary[@"interested_in"] ) {
                 userProfile[KUserProfileInterestedInKey] = userDictionary[@"interested_in"];
+            }
+            if ( userDictionary[@"relationship_status"] ) {
+                userProfile[kUserProfileRelationshipStatusKey] = userDictionary[@"relationship_status"];
             }
             if ( [pictureURL absoluteString] ) {
                 userProfile[kUserProfilePictureURL] = [pictureURL absoluteString];

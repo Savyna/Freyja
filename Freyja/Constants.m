@@ -12,19 +12,21 @@
 
 #pragma mark - User Class
 
-NSString *const kUserProfileKey                 = @"profile";
-NSString *const KUserProfileNameKey             = @"name";
-NSString *const KUserProfileFirstNameKey        = @"firstName";
-NSString *const KUserProfileLocationKey         = @"location";
-NSString *const KUserProfileGenderKey           = @"gender";
-NSString *const KUserProfileBirthdayKey         = @"birthday";
-NSString *const KUserProfileInterestedInKey     = @"interestedIn";
-NSString *const kUserProfilePictureURL          = @"pictureURL";
+NSString *const kUserProfileKey                     = @"profile";
+NSString *const KUserProfileNameKey                 = @"name";
+NSString *const KUserProfileFirstNameKey            = @"firstName";
+NSString *const KUserProfileLocationKey             = @"location";
+NSString *const KUserProfileGenderKey               = @"gender";
+NSString *const KUserProfileBirthdayKey             = @"birthday";
+NSString *const KUserProfileInterestedInKey         = @"interestedIn";
+NSString *const kUserProfilePictureURL              = @"pictureURL";
+NSString *const kUserProfileRelationshipStatusKey   = @"relationshipStatus";
+NSString *const kUserProfileAgeKey                  = @"age";
 
 #pragma mark - Photo Class
 
-NSString *const kPhotoClassKey                  = @"Photo";
-NSString *const kPhotoUserKey                   = @"user";
-NSString *const kPhotoPictureKey                = @"image";
+NSString *const kPhotoClassKey                      = @"Photo";
+NSString *const kPhotoUserKey                       = @"user";
+NSString *const kPhotoPictureKey                    = @"image";
 
 @end
