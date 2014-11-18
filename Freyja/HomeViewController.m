@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import <Parse/Parse.h>
 
 @interface HomeViewController ()
 
@@ -20,6 +21,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *infoButton;
 @property (strong, nonatomic) IBOutlet UIButton *dislikeButton;
 
+@property (strong, nonatomic) NSArray *photos;
+@property (strong, nonatomic) PFObject *photo;
+
+@property (nonatomic) int currentPhotoIndex;
+
 @end
 
 @implementation HomeViewController
@@ -27,6 +33,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.likeButton.enabled = NO;
+    self.dislikeButton.enabled = NO;
+    self.infoButton.enabled = NO;
+    
+    self.currentPhotoIndex = 0;
+    
+    // Query to the Photo Class in Parse
+    PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
+    [query includeKey:@"user"];
+    
+    // Asynchronous access Parse API and get the items in a background thread
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ( !error ) {
+            self.photos = objects;
+            [self queryForCurrentPhotoIndex];
+        }
+        else NSLog(@"%@", error);
+    }];
+    
+    // do additional
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,5 +98,31 @@
     
     
 }
+
+#pragma marks - Helper Methods
+
+- (void)queryForCurrentPhotoIndex
+{
+    if ( [self.photos count] > 0 ) {
+        self.photo = self.photos[self.currentPhotoIndex];
+        
+        // Pointer to the file
+        PFFile *file = self.photo[@"image"];
+        [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if ( !error ) {
+                UIImage *image = [UIImage imageWithData:data];
+                self.photoImageView.image = image;
+            }
+            else NSLog(@"%@", error);
+        }];
+        
+    }
+}
+
+
+
+
+
+
 
 @end
