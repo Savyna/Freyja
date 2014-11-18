@@ -26,6 +26,9 @@
 		9A463FEC1A1AAF8A006A816B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A463FEB1A1AAF8A006A816B /* Constants.m */; };
 		9A56AE6B1A1A08C800D96C02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A018DC71A1A05D1008476B4 /* AppDelegate.m */; };
 		9A85D54F1A1BC7E9008A27BF /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85D54E1A1BC7E9008A27BF /* HomeViewController.m */; };
+		9A85D5531A1BCC12008A27BF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85D5521A1BCC12008A27BF /* SettingsViewController.m */; };
+		9A85D5571A1BD02E008A27BF /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85D5561A1BD02E008A27BF /* EditProfileViewController.m */; };
+		9A85D55B1A1BD26B008A27BF /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85D55A1A1BD26B008A27BF /* ProfileViewController.m */; };
 		9A9190CD1A1A84F400B6D698 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9190CC1A1A84F400B6D698 /* FacebookSDK.framework */; };
 		9AFF8E7D1A1A086600ACBFCA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFF8E7C1A1A086600ACBFCA /* QuartzCore.framework */; };
 		9AFF8E7F1A1A086F00ACBFCA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFF8E7E1A1A086F00ACBFCA /* Security.framework */; };
@@ -71,6 +74,12 @@
 		9A463FEB1A1AAF8A006A816B /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		9A85D54D1A1BC7E9008A27BF /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		9A85D54E1A1BC7E9008A27BF /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		9A85D5511A1BCC12008A27BF /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		9A85D5521A1BCC12008A27BF /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		9A85D5551A1BD02E008A27BF /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		9A85D5561A1BD02E008A27BF /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		9A85D5591A1BD26B008A27BF /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		9A85D55A1A1BD26B008A27BF /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		9A9190CC1A1A84F400B6D698 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		9AFF8E7C1A1A086600ACBFCA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9AFF8E7E1A1A086F00ACBFCA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -138,6 +147,9 @@
 				9A018DC71A1A05D1008476B4 /* AppDelegate.m */,
 				9A463FE91A1A8AE8006A816B /* Login */,
 				9A85D54C1A1BC7AB008A27BF /* Home */,
+				9A85D5501A1BCBF4008A27BF /* Settings */,
+				9A85D5541A1BCFE6008A27BF /* Edit Profile */,
+				9A85D5581A1BD250008A27BF /* Profile */,
 				9A018DD21A1A05D1008476B4 /* Images.xcassets */,
 				9A018DD41A1A05D1008476B4 /* LaunchScreen.xib */,
 				9A018DC21A1A05D1008476B4 /* Supporting Files */,
@@ -212,6 +224,33 @@
 				9A85D54E1A1BC7E9008A27BF /* HomeViewController.m */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		9A85D5501A1BCBF4008A27BF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9A85D5511A1BCC12008A27BF /* SettingsViewController.h */,
+				9A85D5521A1BCC12008A27BF /* SettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		9A85D5541A1BCFE6008A27BF /* Edit Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9A85D5551A1BD02E008A27BF /* EditProfileViewController.h */,
+				9A85D5561A1BD02E008A27BF /* EditProfileViewController.m */,
+			);
+			name = "Edit Profile";
+			sourceTree = "<group>";
+		};
+		9A85D5581A1BD250008A27BF /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9A85D5591A1BD26B008A27BF /* ProfileViewController.h */,
+				9A85D55A1A1BD26B008A27BF /* ProfileViewController.m */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,7 +356,10 @@
 			files = (
 				9A56AE6B1A1A08C800D96C02 /* AppDelegate.m in Sources */,
 				9A018DC51A1A05D1008476B4 /* main.m in Sources */,
+				9A85D55B1A1BD26B008A27BF /* ProfileViewController.m in Sources */,
+				9A85D5571A1BD02E008A27BF /* EditProfileViewController.m in Sources */,
 				9A463FE81A1A8AB9006A816B /* LoginViewController.m in Sources */,
+				9A85D5531A1BCC12008A27BF /* SettingsViewController.m in Sources */,
 				9A85D54F1A1BC7E9008A27BF /* HomeViewController.m in Sources */,
 				9A463FEC1A1AAF8A006A816B /* Constants.m in Sources */,
 			);
