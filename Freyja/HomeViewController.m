@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "ProfileViewController.h"
 #import "Constants.h"
 #import <Parse/Parse.h>
 #import "TestUser.h"
@@ -41,11 +42,10 @@
     
 //    [TestUser saveTestUserToParse];
     
-    self.likeButton.enabled = NO;
-    self.dislikeButton.enabled = NO;
-    self.infoButton.enabled = NO;
-    
-    self.currentPhotoIndex = 0;
+    self.likeButton.enabled     = NO;
+    self.dislikeButton.enabled  = NO;
+    self.infoButton.enabled     = NO;
+    self.currentPhotoIndex      = 0;
     
     // Query to the Photo Class in Parse
     PFQuery *query = [PFQuery queryWithClassName:kPhotoClassKey];
@@ -55,6 +55,7 @@
     // Asynchronous access Parse API and get the items in a background thread
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if ( !error ) {
+            
             self.photos = objects;
             [self queryForCurrentPhotoIndex];
         }
@@ -69,15 +70,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ( [segue.identifier isEqualToString:@"homeToProfileSegue"] ) {
+        ProfileViewController *profileVC = segue.destinationViewController;
+        profileVC.photo = self.photo;
+    }
 }
-*/
+
 
 #pragma mark - IBActions
 
@@ -93,7 +98,7 @@
 
 - (IBAction)infoButtonPressed:(UIButton *)sender
 {
-    
+    [self performSegueWithIdentifier:@"homeToProfileSegue" sender:nil];
 }
 
 - (IBAction)chatBarButtonPressed:(UIBarButtonItem *)sender
@@ -112,12 +117,14 @@
 - (void)queryForCurrentPhotoIndex
 {
     if ( [self.photos count] > 0 ) {
-        self.photo = self.photos[self.currentPhotoIndex];
         
+        self.photo      = self.photos[self.currentPhotoIndex];
         // Pointer to the file
-        PFFile *file = self.photo[kPhotoPictureKey];
+        PFFile *file    = self.photo[kPhotoPictureKey];
+        
         [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
             if ( !error ) {
+                
                 UIImage *image = [UIImage imageWithData:data];
                 self.photoImageView.image = image;
                 [self updateView];
@@ -140,29 +147,34 @@
         // Run Query in a background thread
         [likeAndDislikeQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if ( !error ) {
+                
                 self.activities = [objects mutableCopy];
                 
                 if ( [self.activities count] == 0 ) {
-                    self.isLikedByCurrentUser = NO;
-                    self.isDislikedByCurrentUser = NO;
+                    
+                    self.isLikedByCurrentUser        = NO;
+                    self.isDislikedByCurrentUser     = NO;
                 }
                 else {
                     PFObject *activity = self.activities[0];
                     
                     if ( [activity[kActivityTypeKey] isEqualToString:kActivityTypeLikeKey] ) {
-                        self.isLikedByCurrentUser = YES;
+                        
+                        self.isLikedByCurrentUser    = YES;
                         self.isDislikedByCurrentUser = NO;
                     }
                     else if ( [activity[kActivityTypeKey] isEqualToString:kActivityTypeDislikeKey] ) {
-                        self.isLikedByCurrentUser = NO;
+                        
+                        self.isLikedByCurrentUser    = NO;
                         self.isDislikedByCurrentUser = YES;
                     }
                     else {
                         // Some other type of activity
                     }
                 }
-                self.likeButton.enabled = YES;
-                self.dislikeButton.enabled = YES;
+                self.likeButton.enabled     = YES;
+                self.dislikeButton.enabled  = YES;
+                self.infoButton.enabled     = YES;
             }
         }];
     }
@@ -170,18 +182,20 @@
 
 - (void)updateView
 {
-    self.firstNameLabel.text = self.photo[kPhotoUserKey][kUserProfileKey][KUserProfileFirstNameKey];
-    self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[kPhotoUserKey][kUserProfileKey][kUserProfileAgeKey]];
-    self.tagLineLabel.text = self.photo[kPhotoUserKey][KUserTagLineKey];
+    self.firstNameLabel.text    = self.photo[kPhotoUserKey][kUserProfileKey][KUserProfileFirstNameKey];
+    self.ageLabel.text          = [NSString stringWithFormat:@"%@", self.photo[kPhotoUserKey][kUserProfileKey][kUserProfileAgeKey]];
+    self.tagLineLabel.text      = self.photo[kPhotoUserKey][KUserTagLineKey];
 }
 
 - (void)setupNextPhoto
 {
     if ( self.currentPhotoIndex +1 < self.photos.count ) {
+        
         self.currentPhotoIndex ++;
         [self queryForCurrentPhotoIndex];
     }
     else {
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No More Users to View" message:@"Check back later for more people!" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [alert show];
     }
@@ -200,8 +214,9 @@
     [likeActivity setObject:self.photo forKey:kActivityPhotoKey];
     
     [likeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        self.isLikedByCurrentUser = YES;
-        self.isDislikedByCurrentUser = NO;
+        
+        self.isLikedByCurrentUser       = YES;
+        self.isDislikedByCurrentUser    = NO;
         [self.activities addObject:likeActivity];
         
         // Setup the next photo, and save the like of the current one to Parse
@@ -222,8 +237,9 @@
     [dislikeActivity setObject:self.photo forKey:kActivityPhotoKey];
     
     [dislikeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        self.isLikedByCurrentUser = NO;
-        self.isDislikedByCurrentUser = YES;
+        
+        self.isLikedByCurrentUser       = NO;
+        self.isDislikedByCurrentUser    = YES;
         [self.activities addObject:dislikeActivity];
         
         // Setup the next photo, and save the like of the current one to Parse
@@ -234,10 +250,12 @@
 - (void)checkLike
 {
     if ( self.isLikedByCurrentUser ) {
+        
         [self setupNextPhoto];
         return;
     }
     else if ( self.isDislikedByCurrentUser ) {
+        
         for ( PFObject *activity in self.activities ) {
             [activity deleteInBackground];
         }
@@ -252,10 +270,12 @@
 - (void)checkDislike
 {
     if ( self.isDislikedByCurrentUser ) {
+        
         [self setupNextPhoto];
         return;
     }
     else if ( self.isLikedByCurrentUser ) {
+        
         for ( PFObject *activity in self.activities ) {
             [activity deleteInBackground];
         }

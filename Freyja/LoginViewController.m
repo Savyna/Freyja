@@ -121,11 +121,13 @@
                 userProfile[KUserProfileGenderKey] = userDictionary[@"gender"];
             }
             if ( userDictionary[@"birthday"] ) {
+                
                 userProfile[KUserProfileBirthdayKey] = userDictionary[@"birthday"];
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 [formatter setDateStyle:NSDateFormatterShortStyle];
-                NSDate *date = [formatter dateFromString:userDictionary[@"birthday"]];
-                NSDate *now = [NSDate date];
+                
+                NSDate *date    = [formatter dateFromString:userDictionary[@"birthday"]];
+                NSDate *now     = [NSDate date];
                 NSTimeInterval seconds = [now timeIntervalSinceDate:date];
                 int age = seconds / 31536000;
                 userProfile[kUserProfileAgeKey] = @(age);
