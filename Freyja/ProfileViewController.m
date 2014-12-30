@@ -7,6 +7,7 @@
 //
 
 #import "ProfileViewController.h"
+#import "Constants.h"
 
 @interface ProfileViewController ()
 
@@ -23,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
