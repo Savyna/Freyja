@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "Constants.h"
 
 @interface SettingsViewController ()
 
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UISwitch *singleSwitch;
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
 @property (strong, nonatomic) IBOutlet UIButton *editProfileButton;
+@property (strong, nonatomic) IBOutlet UILabel *ageLabel;
 
 @end
 
@@ -24,6 +26,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.ageSlider.value    = [[NSUserDefaults standardUserDefaults] integerForKey:kAgeMaxKey];
+    self.menSwitch.on       = [[NSUserDefaults standardUserDefaults] boolForKey:kMenEnabledKey];
+    self.womenSwitch.on     = [[NSUserDefaults standardUserDefaults] boolForKey:kWomenEnabledKey];
+    self.singleSwitch.on    = [[NSUserDefaults standardUserDefaults] boolForKey:kSingleEnabledKey];
+    
+    [self.ageSlider addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.menSwitch addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.womenSwitch addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+    [self.singleSwitch addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    self.ageLabel.text      = [NSString stringWithFormat:@"%i", (int)self.ageSlider.value];
 }
 
 - (void)didReceiveMemoryWarning {
