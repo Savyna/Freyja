@@ -66,4 +66,27 @@
     
 }
 
+#pragma mark - Helper Methods
+
+- (void)valueChanged:(id)sender
+{
+    // Instead of saving the user settings in Parse, we save it locally in the device for convenience.
+    if ( sender == self.ageSlider ) {
+        [[NSUserDefaults standardUserDefaults] setInteger:(int)self.ageSlider.value forKey:kAgeMaxKey];
+        self.ageLabel.text = [NSString stringWithFormat:@"%i", (int)self.ageSlider.value];
+    }
+    else if ( sender == self.menSwitch ) {
+        [[NSUserDefaults standardUserDefaults] setBool:self.menSwitch.isOn forKey:kMenEnabledKey];
+    }
+    else if ( sender == self.womenSwitch ) {
+        [[NSUserDefaults standardUserDefaults] setBool:self.womenSwitch.isOn forKey:kWomenEnabledKey];
+    }
+    else if ( sender == self.singleSwitch ) {
+        [[NSUserDefaults standardUserDefaults] setBool:self.singleSwitch.isOn forKey:kSingleEnabledKey];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+}
+
 @end
