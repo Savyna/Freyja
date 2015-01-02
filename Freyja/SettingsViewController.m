@@ -8,6 +8,7 @@
 
 #import "SettingsViewController.h"
 #import "Constants.h"
+#import <Parse/Parse.h>
 
 @interface SettingsViewController ()
 
@@ -58,7 +59,8 @@
 
 - (IBAction)logoutButtonPressed:(UIButton *)sender
 {
-    
+    [PFUser logOut];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)editProfileButtonPressed:(UIButton *)sender
