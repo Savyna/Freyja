@@ -78,6 +78,7 @@
 		9A85D5571A1BD02E008A27BF /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85D5561A1BD02E008A27BF /* EditProfileViewController.m */; };
 		9A85D55B1A1BD26B008A27BF /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85D55A1A1BD26B008A27BF /* ProfileViewController.m */; };
 		9A9190CD1A1A84F400B6D698 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9190CC1A1A84F400B6D698 /* FacebookSDK.framework */; };
+		9ABEFCF71A596B2500A8FBAC /* JSQSystemSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ABEFCF61A596B2500A8FBAC /* JSQSystemSoundPlayer.m */; };
 		9AFF8E7D1A1A086600ACBFCA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFF8E7C1A1A086600ACBFCA /* QuartzCore.framework */; };
 		9AFF8E7F1A1A086F00ACBFCA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFF8E7E1A1A086F00ACBFCA /* Security.framework */; };
 		9AFF8E811A1A087900ACBFCA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFF8E801A1A087900ACBFCA /* StoreKit.framework */; };
@@ -237,6 +238,8 @@
 		9A85D5591A1BD26B008A27BF /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		9A85D55A1A1BD26B008A27BF /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		9A9190CC1A1A84F400B6D698 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		9ABEFCF51A596B2500A8FBAC /* JSQSystemSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSQSystemSoundPlayer.h; sourceTree = "<group>"; };
+		9ABEFCF61A596B2500A8FBAC /* JSQSystemSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQSystemSoundPlayer.m; sourceTree = "<group>"; };
 		9AFF8E7C1A1A086600ACBFCA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9AFF8E7E1A1A086F00ACBFCA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9AFF8E801A1A087900ACBFCA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -248,6 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A018E031A1A07F6008476B4 /* AudioToolbox.framework in Frameworks */,
 				9A9190CD1A1A84F400B6D698 /* FacebookSDK.framework in Frameworks */,
 				9AFF8E831A1A088100ACBFCA /* SystemConfiguration.framework in Frameworks */,
 				9AFF8E811A1A087900ACBFCA /* StoreKit.framework in Frameworks */,
@@ -258,7 +262,6 @@
 				9A018E001A1A07F6008476B4 /* CoreLocation.framework in Frameworks */,
 				9A018E011A1A07F6008476B4 /* CoreGraphics.framework in Frameworks */,
 				9A018E021A1A07F6008476B4 /* CFNetwork.framework in Frameworks */,
-				9A018E031A1A07F6008476B4 /* AudioToolbox.framework in Frameworks */,
 				9A018DF41A1A0787008476B4 /* Bolts.framework in Frameworks */,
 				9A018DF51A1A0789008476B4 /* Parse.framework in Frameworks */,
 				9A018DF61A1A078C008476B4 /* ParseFacebookUtils.framework in Frameworks */,
@@ -321,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				9A054EE61A5965CE0068FE93 /* JSQMessagesViewController */,
+				9ABEFCF31A596B2500A8FBAC /* JSQSystemSoundPlayer */,
 				9A68BEDC1A535FA8000FFDFF /* SOA.png */,
 				9A018DC31A1A05D1008476B4 /* Info.plist */,
 				9A018DC41A1A05D1008476B4 /* main.m */,
@@ -607,6 +611,23 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		9ABEFCF31A596B2500A8FBAC /* JSQSystemSoundPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				9ABEFCF41A596B2500A8FBAC /* Classes */,
+			);
+			path = JSQSystemSoundPlayer;
+			sourceTree = "<group>";
+		};
+		9ABEFCF41A596B2500A8FBAC /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9ABEFCF51A596B2500A8FBAC /* JSQSystemSoundPlayer.h */,
+				9ABEFCF61A596B2500A8FBAC /* JSQSystemSoundPlayer.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -771,6 +792,7 @@
 				9A85D54F1A1BC7E9008A27BF /* HomeViewController.m in Sources */,
 				9A054EE01A595CE40068FE93 /* MatchViewController.m in Sources */,
 				9A054F6C1A5965CE0068FE93 /* JSQVideoMediaItem.m in Sources */,
+				9ABEFCF71A596B2500A8FBAC /* JSQSystemSoundPlayer.m in Sources */,
 				9A054F661A5965CE0068FE93 /* JSQLocationMediaItem.m in Sources */,
 				9A463FEC1A1AAF8A006A816B /* Constants.m in Sources */,
 				9A054F601A5965CE0068FE93 /* JSQMessagesMediaViewBubbleImageMasker.m in Sources */,

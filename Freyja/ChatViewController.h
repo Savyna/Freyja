@@ -7,6 +7,7 @@
 //
 
 #import "JSQMessagesViewController.h"
+#import "JSQMessagesViewController/JSQMessages.h"
 
 @interface ChatViewController : JSQMessagesViewController
 

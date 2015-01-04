@@ -12,7 +12,7 @@
 
 #pragma mark - User Class
 
-NSString *const KUserTagLineKey                     =@"tagLine";
+NSString *const KUserTagLineKey                     = @"tagLine";
 
 NSString *const kUserProfileKey                     = @"profile";
 NSString *const KUserProfileNameKey                 = @"name";

@@ -112,7 +112,7 @@
     
 }
 
-#pragma marks - Helper Methods
+#pragma mark - Helper Methods
 
 - (void)queryForCurrentPhotoIndex
 {
@@ -285,6 +285,21 @@
     else {
         [self saveDislike];
     }
+}
+
+- (void)checkForPhotoUserLikes
+{
+    PFQuery *query = [PFQuery queryWithClassName:kActivityClassKey];
+    
+    [query whereKey:kActivityFromUserKey equalTo:self.photo[kPhotoUserKey]];
+    [query whereKey:kActivityToUserKey equalTo:[PFUser currentUser]];
+    [query whereKey:kActivityTypeKey equalTo:kActivityTypeLikeKey];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ( [objects count] > 0 ) {
+            // create our chatroom
+        }
+    }];
 }
 
 @end
