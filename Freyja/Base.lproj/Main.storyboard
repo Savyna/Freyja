@@ -236,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgA-mS-5nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="416" y="669"/>
+            <point key="canvasLocation" x="416" y="715"/>
         </scene>
         <!--Matches View Controller-->
         <scene sceneID="91r-2m-qdO">
@@ -283,11 +283,31 @@
                     <navigationItem key="navigationItem" id="Abi-ob-6bn"/>
                     <connections>
                         <outlet property="tableView" destination="imZ-1j-8iW" id="RnL-v8-jON"/>
+                        <segue destination="6Cv-j9-UTr" kind="push" identifier="MatchesToChatSegue" id="5mY-gA-YHU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCf-xB-jRo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="815" y="669"/>
+            <point key="canvasLocation" x="849" y="715"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="TTT-UA-1Nj">
+            <objects>
+                <viewController id="6Cv-j9-UTr" customClass="ChatViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sNj-Ow-MlP"/>
+                        <viewControllerLayoutGuide type="bottom" id="bI5-e0-sGE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="csU-gM-7cq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gTs-mr-Pb1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fkF-yn-TA2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1262" y="715"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="cbw-3p-czR">
