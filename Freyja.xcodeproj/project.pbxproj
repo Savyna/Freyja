@@ -22,6 +22,7 @@
 		9A018E031A1A07F6008476B4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A018DF81A1A079A008476B4 /* AudioToolbox.framework */; };
 		9A018E051A1A0823008476B4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A018E041A1A0823008476B4 /* libz.dylib */; };
 		9A018E071A1A083C008476B4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A018E061A1A083C008476B4 /* MobileCoreServices.framework */; };
+		9A054EE01A595CE40068FE93 /* MatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A054EDF1A595CE40068FE93 /* MatchViewController.m */; };
 		9A463FE81A1A8AB9006A816B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A463FE71A1A8AB9006A816B /* LoginViewController.m */; };
 		9A463FEC1A1AAF8A006A816B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A463FEB1A1AAF8A006A816B /* Constants.m */; };
 		9A56AE6B1A1A08C800D96C02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A018DC71A1A05D1008476B4 /* AppDelegate.m */; };
@@ -70,6 +71,8 @@
 		9A018DFE1A1A07D1008476B4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		9A018E041A1A0823008476B4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		9A018E061A1A083C008476B4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		9A054EDE1A595CE40068FE93 /* MatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchViewController.h; sourceTree = "<group>"; };
+		9A054EDF1A595CE40068FE93 /* MatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchViewController.m; sourceTree = "<group>"; };
 		9A463FE61A1A8AB9006A816B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		9A463FE71A1A8AB9006A816B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		9A463FEA1A1AAF8A006A816B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				9A85D5501A1BCBF4008A27BF /* Settings */,
 				9A85D5541A1BCFE6008A27BF /* Edit Profile */,
 				9A85D5581A1BD250008A27BF /* Profile */,
+				9A054EDD1A595C8C0068FE93 /* Match */,
+				9A68BED81A535EEB000FFDFF /* CreateParseUser */,
 				9A018DD21A1A05D1008476B4 /* Images.xcassets */,
 				9A018DD41A1A05D1008476B4 /* LaunchScreen.xib */,
 				9A018DC21A1A05D1008476B4 /* Supporting Files */,
@@ -214,6 +219,15 @@
 			path = Freyja;
 			sourceTree = "<group>";
 		};
+		9A054EDD1A595C8C0068FE93 /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				9A054EDE1A595CE40068FE93 /* MatchViewController.h */,
+				9A054EDF1A595CE40068FE93 /* MatchViewController.m */,
+			);
+			name = Match;
+			sourceTree = "<group>";
+		};
 		9A463FE91A1A8AE8006A816B /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,7 +278,6 @@
 			children = (
 				9A85D5591A1BD26B008A27BF /* ProfileViewController.h */,
 				9A85D55A1A1BD26B008A27BF /* ProfileViewController.m */,
-				9A68BED81A535EEB000FFDFF /* CreateParseUser */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -379,6 +392,7 @@
 				9A463FE81A1A8AB9006A816B /* LoginViewController.m in Sources */,
 				9A85D5531A1BCC12008A27BF /* SettingsViewController.m in Sources */,
 				9A85D54F1A1BC7E9008A27BF /* HomeViewController.m in Sources */,
+				9A054EE01A595CE40068FE93 /* MatchViewController.m in Sources */,
 				9A463FEC1A1AAF8A006A816B /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

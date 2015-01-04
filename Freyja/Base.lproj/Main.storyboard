@@ -172,11 +172,70 @@
                         <outlet property="settingsBarButtonItem" destination="JaI-Lo-7Qa" id="8W4-qG-zbF"/>
                         <outlet property="tagLineLabel" destination="W7C-gI-zbO" id="U50-fS-7mQ"/>
                         <segue destination="cnp-XQ-UGJ" kind="push" identifier="homeToProfileSegue" id="zYW-yv-als"/>
+                        <segue destination="d9p-2S-3qW" kind="modal" identifier="homeToMatchSegue" id="D1K-qk-rjh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Aq-pp-r4R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="416" y="0.0"/>
+        </scene>
+        <!--Match View Controller-->
+        <scene sceneID="c3K-WZ-5Wu">
+            <objects>
+                <viewController id="d9p-2S-3qW" customClass="MatchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wtR-Qi-t65"/>
+                        <viewControllerLayoutGuide type="bottom" id="Iw2-Vg-h1j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ozf-fE-xrn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9f0-3X-OOX">
+                                <rect key="frame" x="16" y="105" width="130" height="130"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gio-c5-8Ti">
+                                <rect key="frame" x="174" y="105" width="130" height="130"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="It's a Match!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" useAutomaticPreferredMaxLayoutWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zj4-vL-YLX">
+                                <rect key="frame" x="113" y="273" width="95" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25d-tg-YMj">
+                                <rect key="frame" x="195" y="380" width="109" height="30"/>
+                                <state key="normal" title="Keep Searching">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="keepSearchingButtonPressed:" destination="d9p-2S-3qW" eventType="touchUpInside" id="Gg4-4y-1uc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGB-GI-HmV">
+                                <rect key="frame" x="16" y="380" width="77" height="30"/>
+                                <state key="normal" title="View Chats">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="viewChatsButtonPressed:" destination="d9p-2S-3qW" eventType="touchUpInside" id="xLC-rk-bNX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kfR-ZI-rLI"/>
+                    <connections>
+                        <outlet property="currentUserImageVIew" destination="gio-c5-8Ti" id="3Pj-5E-8Tp"/>
+                        <outlet property="currentUserImageView" destination="gio-c5-8Ti" id="NwT-gt-Dc0"/>
+                        <outlet property="keepSearchingButton" destination="25d-tg-YMj" id="tEx-MH-Mc8"/>
+                        <outlet property="matchedUserImageView" destination="9f0-3X-OOX" id="sZJ-Z0-XvH"/>
+                        <outlet property="viewChatsButton" destination="kGB-GI-HmV" id="bOP-de-ITy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgA-mS-5nq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="416" y="669"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="cbw-3p-czR">
