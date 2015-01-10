@@ -44,8 +44,15 @@
     PFUser *testUser1   = self.chatRoom[@"user1"];
     
     if ( [testUser1.objectId isEqual:self.currentUser.objectId] ) {
-        
+        self.withUser = self.chatRoom[@"user2"];
     }
+    else {
+        self.withUser = self.chatRoom[@"user1"];
+    }
+    
+    self.title                  = self.withUser[@"profile"][@"firstName"];
+    self.initialLoadComplete    = NO;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,5 +69,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - TableView DataSource
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.chats count];
+}
 
 @end
