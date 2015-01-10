@@ -10,13 +10,42 @@
 
 @interface ChatsViewController ()
 
+@property (strong, nonatomic) PFUser *withUser;
+@property (strong, nonatomic) PFUser *currentUser;
+
+@property (strong, nonatomic) NSTimer *chatsTimers;
+@property (nonatomic) BOOL initialLoadComplete;
+
+@property (strong, nonatomic) NSMutableArray *chats;
+
 @end
 
 @implementation ChatsViewController
 
+- (NSMutableArray *)chats
+{
+    if ( !_chats ) {
+        _chats = [[NSMutableArray alloc] init];
+    }
+    return _chats;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.delegate   = self;
+    self.dataSource = self;
+    
+    [[JSBubbleView appearance] setFont:[UIFont systemFontOfSize:16.0f]];
+    self.messageInputView.textView.placeHolder = @"New Message";
+    [self setBackgroundColor:[UIColor whiteColor]];
+    
+    self.currentUser    = [PFUser currentUser];
+    PFUser *testUser1   = self.chatRoom[@"user1"];
+    
+    if ( [testUser1.objectId isEqual:self.currentUser.objectId] ) {
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
