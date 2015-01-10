@@ -77,4 +77,29 @@
     return [self.chats count];
 }
 
+#pragma mark - TableView Delegate
+
+-(void)didSendText:(NSString *)text
+{
+    if ( text.length != 0 ) {
+        
+        PFObject *chat = [PFObject objectWithClassName:@"Chat"];
+        
+        [chat setObject:self.chatRoom    forKey:@"chatroom"];
+        [chat setObject:self.currentUser forKey:@"fromUser"];
+        [chat setObject:self.withUser    forKey:@"toUser"];
+        [chat setObject:text             forKey:@"text"];
+        
+        [chat saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            
+            [self.chats addObject:chat];
+            [JSMessageSoundEffect playMessageSentSound];
+            [self.tableView reloadData];
+            [self finishSend];
+            [self scrollToBottomAnimated:YES];
+        }];
+        
+    }
+}
+
 @end
