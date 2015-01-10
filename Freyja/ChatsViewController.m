@@ -13,7 +13,7 @@
 @property (strong, nonatomic) PFUser *withUser;
 @property (strong, nonatomic) PFUser *currentUser;
 
-@property (strong, nonatomic) NSTimer *chatsTimers;
+@property (strong, nonatomic) NSTimer *chatsTimer;
 @property (nonatomic) BOOL initialLoadComplete;
 
 @property (strong, nonatomic) NSMutableArray *chats;
@@ -53,11 +53,19 @@
     self.title                  = self.withUser[@"profile"][@"firstName"];
     self.initialLoadComplete    = NO;
     
+    [self checkForNewChats];
+    self.chatsTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(checkForNewChats) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self.chatsTimer invalidate];
+    self.chatsTimer = nil;
 }
 
 /*
