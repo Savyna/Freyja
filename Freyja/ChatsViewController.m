@@ -77,7 +77,7 @@
     return [self.chats count];
 }
 
-#pragma mark - TableView Delegate
+#pragma mark - TableView Delegate - REQUIRED
 
 - (void)didSendText:(NSString *)text
 {
@@ -146,6 +146,20 @@
 - (JSMessageInputViewStyle)inputViewStyle
 {
     return JSMessageInputViewStyleFlat;
+}
+
+#pragma mark - Messages View Delegate - OPTIONAL
+
+- (void)configureCell:(JSBubbleMessageCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    if ( [cell messageType] == JSBubbleMessageTypeOutgoing ) {
+        cell.bubbleView.textView.textColor = [UIColor whiteColor];
+    }
+}
+
+- (BOOL)shouldPreventScrollToBottomWhileUserScrolling
+{
+    return YES;
 }
 
 @end
