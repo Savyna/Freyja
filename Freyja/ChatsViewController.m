@@ -187,4 +187,33 @@
     return nil;
 }
 
+#pragma mark - Helper Methods
+
+- (void)checkForNewChats
+{
+    int oldChatCount        = [self.chats count];
+    PFQuery *queryForChats  = [PFQuery queryWithClassName:@"Chat"];
+    
+    [queryForChats whereKey:@"chatroom" equalTo:self.chatRoom];
+    [queryForChats orderByAscending:@"createdAt"];
+    
+    [queryForChats findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if ( !error ) {
+            if ( self.initialLoadComplete == NO || oldChatCount != [objects count] ) {
+                
+                self.chats = [objects mutableCopy];
+                [self.tableView reloadData];
+                
+                if ( self.initialLoadComplete == YES ) {
+                    [JSMessageSoundEffect playMessageReceivedSound];
+                }
+                
+                self.initialLoadComplete = YES;
+                [self scrollToBottomAnimated:YES];
+            }
+        }
+    }];
+}
+
 @end
