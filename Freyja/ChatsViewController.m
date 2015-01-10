@@ -162,4 +162,29 @@
     return YES;
 }
 
+#pragma mark - Messages View Data Source - REQUIRED
+
+- (NSString *)textForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFObject *chat      = self.chats[indexPath.row];
+    NSString *message   = chat[@"text"];
+    
+    return message;
+}
+
+- (NSDate *)timestampForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
+- (UIImageView *)avatarImageViewForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
+- (NSString *)subtitleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
 @end
