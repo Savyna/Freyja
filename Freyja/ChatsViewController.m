@@ -72,14 +72,14 @@
 
 #pragma mark - TableView DataSource
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.chats count];
 }
 
 #pragma mark - TableView Delegate
 
--(void)didSendText:(NSString *)text
+- (void)didSendText:(NSString *)text
 {
     if ( text.length != 0 ) {
         
@@ -102,7 +102,7 @@
     }
 }
 
--(JSBubbleMessageType)messageTypeForRowAtIndexPath:(NSIndexPath *)indexPath
+- (JSBubbleMessageType)messageTypeForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PFObject *chat          = self.chats[indexPath.row];
     PFUser *testFromUser    = chat[@"fromUser"];
@@ -112,6 +112,19 @@
     }
     else {
         return JSBubbleMessageTypeIncoming;
+    }
+}
+
+- (UIImageView *)bubbleImageViewWithType:(JSBubbleMessageType)type forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFObject *chat          = self.chats[indexPath.row];
+    PFUser *testFromUser    = chat[@"fromUser"];
+    
+    if ( [testFromUser.objectId isEqual:self.currentUser.objectId ] ) {
+        return [JSBubbleImageViewFactory bubbleImageViewForType:type color:[UIColor js_bubbleGreenColor]];
+    }
+    else {
+        return [JSBubbleImageViewFactory bubbleImageViewForType:type color:[UIColor js_bubbleLightGrayColor]];
     }
 }
 
