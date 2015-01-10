@@ -120,7 +120,7 @@
             [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                 
                 cell.imageView.image        = [UIImage imageWithData:data];
-                cell.imageView.contentMode  = [UIViewContentModeScaleAspectFit];
+                cell.imageView.contentMode  = UIViewContentModeScaleAspectFit;
             }];
         }
     }];
