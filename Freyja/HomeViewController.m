@@ -43,6 +43,15 @@
     
     //[TestUser saveTestUserToParse];
     
+    // do additional
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.photoImageView.image   = nil;
+    self.firstNameLabel.text    = nil;
+    self.ageLabel.text          = nil;
+    
     self.likeButton.enabled     = NO;
     self.dislikeButton.enabled  = NO;
     self.infoButton.enabled     = NO;
@@ -58,12 +67,16 @@
         if ( !error ) {
             
             self.photos = objects;
-            [self queryForCurrentPhotoIndex];
+            
+            if ( [self allowPhoto] == NO ) {
+                [self setupNextPhoto];
+            }
+            else {
+                [self queryForCurrentPhotoIndex];
+            }
         }
         else NSLog(@"%@", error);
     }];
-    
-    // do additional
 }
 
 - (void)didReceiveMemoryWarning {
@@ -204,7 +217,13 @@
     if ( self.currentPhotoIndex +1 < self.photos.count ) {
         
         self.currentPhotoIndex ++;
-        [self queryForCurrentPhotoIndex];
+        
+        if ( [self allowPhoto] == NO ) {
+            [self setupNextPhoto];
+        }
+        else {
+            [self queryForCurrentPhotoIndex];
+        }
     }
     else {
         
