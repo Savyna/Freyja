@@ -213,6 +213,37 @@
     }
 }
 
+- (BOOL)allowPhoto
+{
+    int maxAge        = [[NSUserDefaults standardUserDefaults] integerForKey:kAgeMaxKey];
+    BOOL men          = [[NSUserDefaults standardUserDefaults] boolForKey:kMenEnabledKey];
+    BOOL women        = [[NSUserDefaults standardUserDefaults] boolForKey:kWomenEnabledKey];
+    BOOL single       = [[NSUserDefaults standardUserDefaults] boolForKey:kSingleEnabledKey];
+    
+    PFObject *photo   = self.photos[self.currentPhotoIndex];
+    PFUser *user      = photo[kPhotoUserKey];
+    
+    int userAge       = [user[kUserProfileKey][kUserProfileAgeKey] intValue];
+    NSString *gender  = user[kUserProfileKey][KUserProfileGenderKey];
+    NSString *relationshipStatus = user[kUserProfileKey][kUserProfileRelationshipStatusKey];
+    
+    if ( userAge > maxAge ) {
+        return NO;
+    }
+    else if ( men == NO && [gender isEqualToString:@"male"] ) {
+        return NO;
+    }
+    else if ( women == NO && [gender isEqualToString:@"female"]) {
+        return NO;
+    }
+    else if ( single == NO && ([relationshipStatus isEqualToString:@"single"] || relationshipStatus == nil )) {
+        return NO;
+    }
+    else {
+        return YES;
+    }
+}
+
 - (void)saveLike
 {
     // Creates a new class called Activity in Parse

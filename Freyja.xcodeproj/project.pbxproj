@@ -32,6 +32,7 @@
 		9A56AE6B1A1A08C800D96C02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A018DC71A1A05D1008476B4 /* AppDelegate.m */; };
 		9A68BEDB1A535F12000FFDFF /* TestUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A68BEDA1A535F12000FFDFF /* TestUser.m */; };
 		9A68BEDD1A535FA8000FFDFF /* SOA.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A68BEDC1A535FA8000FFDFF /* SOA.png */; };
+		9A6D68441A62FE3900C71D74 /* defaultPrefsFile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A6D68431A62FE3900C71D74 /* defaultPrefsFile.plist */; };
 		9A85D54F1A1BC7E9008A27BF /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85D54E1A1BC7E9008A27BF /* HomeViewController.m */; };
 		9A85D5531A1BCC12008A27BF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85D5521A1BCC12008A27BF /* SettingsViewController.m */; };
 		9A85D5571A1BD02E008A27BF /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A85D5561A1BD02E008A27BF /* EditProfileViewController.m */; };
@@ -147,6 +148,7 @@
 		9A68BED91A535F12000FFDFF /* TestUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUser.h; sourceTree = "<group>"; };
 		9A68BEDA1A535F12000FFDFF /* TestUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUser.m; sourceTree = "<group>"; };
 		9A68BEDC1A535FA8000FFDFF /* SOA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SOA.png; sourceTree = "<group>"; };
+		9A6D68431A62FE3900C71D74 /* defaultPrefsFile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultPrefsFile.plist; sourceTree = "<group>"; };
 		9A85D54D1A1BC7E9008A27BF /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		9A85D54E1A1BC7E9008A27BF /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		9A85D5511A1BCC12008A27BF /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 			children = (
 				9A85D5511A1BCC12008A27BF /* SettingsViewController.h */,
 				9A85D5521A1BCC12008A27BF /* SettingsViewController.m */,
+				9A6D68431A62FE3900C71D74 /* defaultPrefsFile.plist */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				9A8C09EA1A61624F007FE131 /* bubble-min-tailless.png in Resources */,
 				9A8C0A021A61624F007FE131 /* message-received.aiff in Resources */,
 				9A8C09D91A61624F007FE131 /* avatar-placeholder@2x.png in Resources */,
+				9A6D68441A62FE3900C71D74 /* defaultPrefsFile.plist in Resources */,
 				9A8C09EC1A61624F007FE131 /* bubble-min.png in Resources */,
 				9A8C09F21A61624F007FE131 /* bubble-tailless.png in Resources */,
 				9A8C09DD1A61624F007FE131 /* bubble-classic-gray@2x.png in Resources */,
