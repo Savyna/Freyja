@@ -172,8 +172,8 @@
                         <outlet property="settingsBarButtonItem" destination="JaI-Lo-7Qa" id="8W4-qG-zbF"/>
                         <outlet property="tagLineLabel" destination="W7C-gI-zbO" id="U50-fS-7mQ"/>
                         <segue destination="cnp-XQ-UGJ" kind="push" identifier="homeToProfileSegue" id="zYW-yv-als"/>
-                        <segue destination="d9p-2S-3qW" kind="modal" identifier="homeToMatchSegue" id="D1K-qk-rjh"/>
                         <segue destination="A6L-rP-6ZO" kind="push" identifier="homeToMatchesSegue" id="85U-Lg-Qxf"/>
+                        <segue destination="d9p-2S-3qW" kind="modal" identifier="homeToMatchSegue" id="JOP-be-d04"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Aq-pp-r4R" userLabel="First Responder" sceneMemberID="firstResponder"/>

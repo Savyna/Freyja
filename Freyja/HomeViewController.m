@@ -41,7 +41,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    [TestUser saveTestUserToParse];
+    //[TestUser saveTestUserToParse];
     
     self.likeButton.enabled     = NO;
     self.dislikeButton.enabled  = NO;
@@ -79,13 +79,16 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
+    NSLog(@"prepareForSegue called in HomeViewController");
+    NSLog(@"segue.identifier: %@, %@", segue.identifier, sender);
+    
     if ( [segue.identifier isEqualToString:@"homeToProfileSegue"] ) {
         
         ProfileViewController *profileVC = segue.destinationViewController;
         profileVC.photo = self.photo;
     }
     else if ( [segue.identifier isEqualToString:@"homeToMatchSegue"] ) {
-        
+
         MatchViewController *matchVC    = segue.destinationViewController;
         matchVC.matchedUserImage        = self.photoImageView.image;
         matchVC.delegate                = self;
@@ -316,6 +319,8 @@
 
 - (void)createChatRoom
 {
+    NSLog(@"createChatRoom called");
+    
     PFQuery *queryForChatRoom = [PFQuery queryWithClassName:@"ChatRoom"];
     
     [queryForChatRoom whereKey:@"user1" equalTo:[PFUser currentUser]];
@@ -326,17 +331,26 @@
     [queryForChatRoomInverse whereKey:@"user2" equalTo:[PFUser currentUser]];
     
     PFQuery *combinedQuery = [PFQuery orQueryWithSubqueries:@[queryForChatRoom, queryForChatRoomInverse]];
-    
+
     [combinedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+
+        NSLog(@"Number of ChatRooms: %lu", (unsigned long)[objects count]);
+        if ( error ){
+            NSLog(@"%@", error);
+        }
         
-        if ( [objects count] == 0 ) {
-            
+        else if ( [objects count] == 0 ) {
+
             PFObject *chatroom = [PFObject objectWithClassName:@"ChatRoom"];
             [chatroom setObject:[PFUser currentUser] forKey:@"user1"];
             [chatroom setObject:self.photo[kPhotoUserKey] forKey:@"user2"];
             
             [chatroom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                
+                NSLog(@"Success: %i", succeeded);
+                if ( error ) {
+                    NSLog(@"%@", error);
+                }
+
                 [self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
             }];
         }
@@ -347,6 +361,7 @@
 
 - (void) presentMatchesViewController
 {
+    NSLog(@"presentMatchesViewController called");
     [self dismissViewControllerAnimated:NO completion:^{
         [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
     }];

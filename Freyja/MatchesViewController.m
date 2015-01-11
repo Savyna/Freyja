@@ -65,7 +65,7 @@
     [query whereKey:@"user1" equalTo:[PFUser currentUser]];
     
     PFQuery *queryInverse = [PFQuery queryWithClassName:@"ChatRoom"];
-#warning - Not sure if query or queryInverse in next line
+
     [query whereKey:@"user2" equalTo:[PFUser currentUser]];
     
     PFQuery *queryCombined = [PFQuery orQueryWithSubqueries:@[query, queryInverse]];
