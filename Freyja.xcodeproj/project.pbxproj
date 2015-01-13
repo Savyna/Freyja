@@ -244,6 +244,29 @@
 		9A8C0A081A61627B007FE131 /* JSQSystemSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A8C0A071A61627B007FE131 /* JSQSystemSoundPlayer.m */; };
 		9A9190CD1A1A84F400B6D698 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9190CC1A1A84F400B6D698 /* FacebookSDK.framework */; };
 		9AB37E791A65B12A00B743F1 /* TransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB37E781A65B12A00B743F1 /* TransitionAnimator.m */; };
+		9AB37F401A65BA8600B743F1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB37F3F1A65BA8600B743F1 /* CoreTelephony.framework */; };
+		9AB37F421A65BA8E00B743F1 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB37F411A65BA8E00B743F1 /* Accelerate.framework */; };
+		9AB37F441A65DE9E00B743F1 /* libMPCategoryHelpers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB37F431A65DE9E00B743F1 /* libMPCategoryHelpers.a */; };
+		9AB37F631A65E12300B743F1 /* Mixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB37F471A65E12300B743F1 /* Mixpanel.m */; };
+		9AB37F641A65E12300B743F1 /* MPArrowLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F481A65E12300B743F1 /* MPArrowLeft.png */; };
+		9AB37F651A65E12300B743F1 /* MPArrowLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F491A65E12300B743F1 /* MPArrowLeft@2x.png */; };
+		9AB37F661A65E12300B743F1 /* MPArrowRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F4A1A65E12300B743F1 /* MPArrowRight.png */; };
+		9AB37F671A65E12300B743F1 /* MPArrowRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F4B1A65E12300B743F1 /* MPArrowRight@2x.png */; };
+		9AB37F681A65E12300B743F1 /* MPCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F4C1A65E12300B743F1 /* MPCheckmark.png */; };
+		9AB37F691A65E12300B743F1 /* MPCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F4D1A65E12300B743F1 /* MPCheckmark@2x.png */; };
+		9AB37F6A1A65E12300B743F1 /* MPDismissKeyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F4E1A65E12300B743F1 /* MPDismissKeyboard.png */; };
+		9AB37F6B1A65E12300B743F1 /* MPDismissKeyboard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F4F1A65E12300B743F1 /* MPDismissKeyboard@2x.png */; };
+		9AB37F6C1A65E12300B743F1 /* MPLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F501A65E12300B743F1 /* MPLogo.png */; };
+		9AB37F6D1A65E12300B743F1 /* MPLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F511A65E12300B743F1 /* MPLogo@2x.png */; };
+		9AB37F6E1A65E12300B743F1 /* MPSurvey.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB37F531A65E12300B743F1 /* MPSurvey.m */; };
+		9AB37F6F1A65E12300B743F1 /* MPSurvey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AB37F541A65E12300B743F1 /* MPSurvey.storyboard */; };
+		9AB37F701A65E12300B743F1 /* MPSurveyNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB37F561A65E12300B743F1 /* MPSurveyNavigationController.m */; };
+		9AB37F711A65E12300B743F1 /* MPSurveyQuestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB37F581A65E12300B743F1 /* MPSurveyQuestion.m */; };
+		9AB37F721A65E12300B743F1 /* MPSurveyQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB37F5A1A65E12300B743F1 /* MPSurveyQuestionViewController.m */; };
+		9AB37F731A65E12300B743F1 /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB37F5C1A65E12300B743F1 /* NSData+MPBase64.m */; };
+		9AB37F741A65E12300B743F1 /* UIImage+MPAverageColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB37F5E1A65E12300B743F1 /* UIImage+MPAverageColor.m */; };
+		9AB37F751A65E12300B743F1 /* UIImage+MPImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB37F601A65E12300B743F1 /* UIImage+MPImageEffects.m */; };
+		9AB37F761A65E12300B743F1 /* UIView+MPSnapshotImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB37F621A65E12300B743F1 /* UIView+MPSnapshotImage.m */; };
 		9AFF8E7D1A1A086600ACBFCA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFF8E7C1A1A086600ACBFCA /* QuartzCore.framework */; };
 		9AFF8E7F1A1A086F00ACBFCA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFF8E7E1A1A086F00ACBFCA /* Security.framework */; };
 		9AFF8E811A1A087900ACBFCA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFF8E801A1A087900ACBFCA /* StoreKit.framework */; };
@@ -527,6 +550,38 @@
 		9A9190CC1A1A84F400B6D698 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		9AB37E771A65B12A00B743F1 /* TransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitionAnimator.h; sourceTree = "<group>"; };
 		9AB37E781A65B12A00B743F1 /* TransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitionAnimator.m; sourceTree = "<group>"; };
+		9AB37F3F1A65BA8600B743F1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		9AB37F411A65BA8E00B743F1 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		9AB37F431A65DE9E00B743F1 /* libMPCategoryHelpers.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMPCategoryHelpers.a; path = "../../mixpanel-iphone/Mixpanel/libMPCategoryHelpers.a"; sourceTree = "<group>"; };
+		9AB37F461A65E12300B743F1 /* Mixpanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixpanel.h; sourceTree = "<group>"; };
+		9AB37F471A65E12300B743F1 /* Mixpanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mixpanel.m; sourceTree = "<group>"; };
+		9AB37F481A65E12300B743F1 /* MPArrowLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPArrowLeft.png; sourceTree = "<group>"; };
+		9AB37F491A65E12300B743F1 /* MPArrowLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPArrowLeft@2x.png"; sourceTree = "<group>"; };
+		9AB37F4A1A65E12300B743F1 /* MPArrowRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPArrowRight.png; sourceTree = "<group>"; };
+		9AB37F4B1A65E12300B743F1 /* MPArrowRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPArrowRight@2x.png"; sourceTree = "<group>"; };
+		9AB37F4C1A65E12300B743F1 /* MPCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPCheckmark.png; sourceTree = "<group>"; };
+		9AB37F4D1A65E12300B743F1 /* MPCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCheckmark@2x.png"; sourceTree = "<group>"; };
+		9AB37F4E1A65E12300B743F1 /* MPDismissKeyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPDismissKeyboard.png; sourceTree = "<group>"; };
+		9AB37F4F1A65E12300B743F1 /* MPDismissKeyboard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPDismissKeyboard@2x.png"; sourceTree = "<group>"; };
+		9AB37F501A65E12300B743F1 /* MPLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPLogo.png; sourceTree = "<group>"; };
+		9AB37F511A65E12300B743F1 /* MPLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPLogo@2x.png"; sourceTree = "<group>"; };
+		9AB37F521A65E12300B743F1 /* MPSurvey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSurvey.h; sourceTree = "<group>"; };
+		9AB37F531A65E12300B743F1 /* MPSurvey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSurvey.m; sourceTree = "<group>"; };
+		9AB37F541A65E12300B743F1 /* MPSurvey.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MPSurvey.storyboard; sourceTree = "<group>"; };
+		9AB37F551A65E12300B743F1 /* MPSurveyNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSurveyNavigationController.h; sourceTree = "<group>"; };
+		9AB37F561A65E12300B743F1 /* MPSurveyNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSurveyNavigationController.m; sourceTree = "<group>"; };
+		9AB37F571A65E12300B743F1 /* MPSurveyQuestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSurveyQuestion.h; sourceTree = "<group>"; };
+		9AB37F581A65E12300B743F1 /* MPSurveyQuestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSurveyQuestion.m; sourceTree = "<group>"; };
+		9AB37F591A65E12300B743F1 /* MPSurveyQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPSurveyQuestionViewController.h; sourceTree = "<group>"; };
+		9AB37F5A1A65E12300B743F1 /* MPSurveyQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPSurveyQuestionViewController.m; sourceTree = "<group>"; };
+		9AB37F5B1A65E12300B743F1 /* NSData+MPBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MPBase64.h"; sourceTree = "<group>"; };
+		9AB37F5C1A65E12300B743F1 /* NSData+MPBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MPBase64.m"; sourceTree = "<group>"; };
+		9AB37F5D1A65E12300B743F1 /* UIImage+MPAverageColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MPAverageColor.h"; sourceTree = "<group>"; };
+		9AB37F5E1A65E12300B743F1 /* UIImage+MPAverageColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MPAverageColor.m"; sourceTree = "<group>"; };
+		9AB37F5F1A65E12300B743F1 /* UIImage+MPImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MPImageEffects.h"; sourceTree = "<group>"; };
+		9AB37F601A65E12300B743F1 /* UIImage+MPImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MPImageEffects.m"; sourceTree = "<group>"; };
+		9AB37F611A65E12300B743F1 /* UIView+MPSnapshotImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MPSnapshotImage.h"; sourceTree = "<group>"; };
+		9AB37F621A65E12300B743F1 /* UIView+MPSnapshotImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MPSnapshotImage.m"; sourceTree = "<group>"; };
 		9AFF8E7C1A1A086600ACBFCA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9AFF8E7E1A1A086F00ACBFCA /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9AFF8E801A1A087900ACBFCA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -538,8 +593,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A45A88B1A61676900C26DA4 /* Foundation.framework in Frameworks */,
+				9AB37F441A65DE9E00B743F1 /* libMPCategoryHelpers.a in Frameworks */,
 				9A45A8891A61675600C26DA4 /* UIKit.framework in Frameworks */,
+				9AB37F421A65BA8E00B743F1 /* Accelerate.framework in Frameworks */,
+				9AB37F401A65BA8600B743F1 /* CoreTelephony.framework in Frameworks */,
+				9A45A88B1A61676900C26DA4 /* Foundation.framework in Frameworks */,
 				9A018E031A1A07F6008476B4 /* AudioToolbox.framework in Frameworks */,
 				9A9190CD1A1A84F400B6D698 /* FacebookSDK.framework in Frameworks */,
 				9AFF8E831A1A088100ACBFCA /* SystemConfiguration.framework in Frameworks */,
@@ -612,6 +670,7 @@
 		9A018DC21A1A05D1008476B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9AB37F451A65E12300B743F1 /* Mixpanel */,
 				9A424E011A645E8F005B5FDA /* User_Image.jpg */,
 				9A6D68451A6311CB00C71D74 /* Freyja_assets */,
 				9A8C0A041A61627B007FE131 /* JSQSystemSoundPlayer */,
@@ -644,6 +703,9 @@
 		9A018DF31A1A0740008476B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AB37F431A65DE9E00B743F1 /* libMPCategoryHelpers.a */,
+				9AB37F411A65BA8E00B743F1 /* Accelerate.framework */,
+				9AB37F3F1A65BA8600B743F1 /* CoreTelephony.framework */,
 				9A45A88A1A61676900C26DA4 /* Foundation.framework */,
 				9A45A8881A61675600C26DA4 /* UIKit.framework */,
 				9A9190CC1A1A84F400B6D698 /* FacebookSDK.framework */,
@@ -1222,6 +1284,42 @@
 			name = "Transition Helper";
 			sourceTree = "<group>";
 		};
+		9AB37F451A65E12300B743F1 /* Mixpanel */ = {
+			isa = PBXGroup;
+			children = (
+				9AB37F461A65E12300B743F1 /* Mixpanel.h */,
+				9AB37F471A65E12300B743F1 /* Mixpanel.m */,
+				9AB37F481A65E12300B743F1 /* MPArrowLeft.png */,
+				9AB37F491A65E12300B743F1 /* MPArrowLeft@2x.png */,
+				9AB37F4A1A65E12300B743F1 /* MPArrowRight.png */,
+				9AB37F4B1A65E12300B743F1 /* MPArrowRight@2x.png */,
+				9AB37F4C1A65E12300B743F1 /* MPCheckmark.png */,
+				9AB37F4D1A65E12300B743F1 /* MPCheckmark@2x.png */,
+				9AB37F4E1A65E12300B743F1 /* MPDismissKeyboard.png */,
+				9AB37F4F1A65E12300B743F1 /* MPDismissKeyboard@2x.png */,
+				9AB37F501A65E12300B743F1 /* MPLogo.png */,
+				9AB37F511A65E12300B743F1 /* MPLogo@2x.png */,
+				9AB37F521A65E12300B743F1 /* MPSurvey.h */,
+				9AB37F531A65E12300B743F1 /* MPSurvey.m */,
+				9AB37F541A65E12300B743F1 /* MPSurvey.storyboard */,
+				9AB37F551A65E12300B743F1 /* MPSurveyNavigationController.h */,
+				9AB37F561A65E12300B743F1 /* MPSurveyNavigationController.m */,
+				9AB37F571A65E12300B743F1 /* MPSurveyQuestion.h */,
+				9AB37F581A65E12300B743F1 /* MPSurveyQuestion.m */,
+				9AB37F591A65E12300B743F1 /* MPSurveyQuestionViewController.h */,
+				9AB37F5A1A65E12300B743F1 /* MPSurveyQuestionViewController.m */,
+				9AB37F5B1A65E12300B743F1 /* NSData+MPBase64.h */,
+				9AB37F5C1A65E12300B743F1 /* NSData+MPBase64.m */,
+				9AB37F5D1A65E12300B743F1 /* UIImage+MPAverageColor.h */,
+				9AB37F5E1A65E12300B743F1 /* UIImage+MPAverageColor.m */,
+				9AB37F5F1A65E12300B743F1 /* UIImage+MPImageEffects.h */,
+				9AB37F601A65E12300B743F1 /* UIImage+MPImageEffects.m */,
+				9AB37F611A65E12300B743F1 /* UIView+MPSnapshotImage.h */,
+				9AB37F621A65E12300B743F1 /* UIView+MPSnapshotImage.m */,
+			);
+			path = Mixpanel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1328,6 +1426,7 @@
 				9A6D69341A6311CB00C71D74 /* menu-icon@2x.png in Resources */,
 				9A6D69411A6311CB00C71D74 /* Logout.png in Resources */,
 				9A6D69151A6311CB00C71D74 /* NameAgeStatusBar.png in Resources */,
+				9AB37F641A65E12300B743F1 /* MPArrowLeft.png in Resources */,
 				9A018DD11A1A05D1008476B4 /* Main.storyboard in Resources */,
 				9A6D693B1A6311CB00C71D74 /* back-icon.png in Resources */,
 				9A6D68EC1A6311CB00C71D74 /* BG@2x.png in Resources */,
@@ -1349,10 +1448,12 @@
 				9A6D69731A6311CB00C71D74 /* Icon-76@2x.png in Resources */,
 				9A6D68441A62FE3900C71D74 /* defaultPrefsFile.plist in Resources */,
 				9A6D696B1A6311CB00C71D74 /* iTunesArtwork@2x.png in Resources */,
+				9AB37F6B1A65E12300B743F1 /* MPDismissKeyboard@2x.png in Resources */,
 				9A6D697A1A6311CB00C71D74 /* iTunesArtwork.png in Resources */,
 				9A8C09EC1A61624F007FE131 /* bubble-min.png in Resources */,
 				9A6D693C1A6311CB00C71D74 /* back-icon@2x.png in Resources */,
 				9A6D69281A6311CB00C71D74 /* menu-icon@2x.png in Resources */,
+				9AB37F651A65E12300B743F1 /* MPArrowLeft@2x.png in Resources */,
 				9A8C09F21A61624F007FE131 /* bubble-tailless.png in Resources */,
 				9A8C09DD1A61624F007FE131 /* bubble-classic-gray@2x.png in Resources */,
 				9A6D69681A6311CB00C71D74 /* Icon.png in Resources */,
@@ -1378,6 +1479,7 @@
 				9A6D692C1A6311CB00C71D74 /* Top_NavBG@2x.png in Resources */,
 				9A6D69041A6311CB00C71D74 /* VP_BG@2x.png in Resources */,
 				9A6D690C1A6311CB00C71D74 /* ChatIcon@2x.png in Resources */,
+				9AB37F661A65E12300B743F1 /* MPArrowRight.png in Resources */,
 				9A6D692D1A6311CB00C71D74 /* back-icon.png in Resources */,
 				9A8C09FE1A61624F007FE131 /* button-photo.png in Resources */,
 				9A6D68F71A6311CB00C71D74 /* InfoIcon.png in Resources */,
@@ -1390,6 +1492,7 @@
 				9A6D695A1A6311CB00C71D74 /* Close-Button@2x.png in Resources */,
 				9A6D69611A6311CB00C71D74 /* 1024_icon-1-01.png in Resources */,
 				9A8C09E21A61624F007FE131 /* bubble-classic-typing.png in Resources */,
+				9AB37F681A65E12300B743F1 /* MPCheckmark.png in Resources */,
 				9A6D69511A6311CB00C71D74 /* SettingIcon.png in Resources */,
 				9A8C09E81A61624F007FE131 /* bubble-classic-square-selected.png in Resources */,
 				9A6D68FE1A6311CB00C71D74 /* SettingIcon@2x.png in Resources */,
@@ -1397,6 +1500,7 @@
 				9A8C0A031A61624F007FE131 /* message-sent.aiff in Resources */,
 				9A8C09F11A61624F007FE131 /* bubble-stroked@2x.png in Resources */,
 				9A6D692F1A6311CB00C71D74 /* BG.png in Resources */,
+				9AB37F6C1A65E12300B743F1 /* MPLogo.png in Resources */,
 				9A6D69191A6311CB00C71D74 /* Single.png in Resources */,
 				9A6D69171A6311CB00C71D74 /* SettingIcon.png in Resources */,
 				9A6D69181A6311CB00C71D74 /* SettingIcon@2x.png in Resources */,
@@ -1414,6 +1518,7 @@
 				9A6D69491A6311CB00C71D74 /* About_BG.png in Resources */,
 				9A6D69771A6311CB00C71D74 /* Icon-Small@2x.png in Resources */,
 				9A6D69021A6311CB00C71D74 /* User_Image@2x.png in Resources */,
+				9AB37F6D1A65E12300B743F1 /* MPLogo@2x.png in Resources */,
 				9A6D69091A6311CB00C71D74 /* BG.png in Resources */,
 				9A6D69241A6311CB00C71D74 /* BG@2x.png in Resources */,
 				9A6D691C1A6311CB00C71D74 /* StatusIcon@2x.png in Resources */,
@@ -1441,6 +1546,7 @@
 				9A6D692E1A6311CB00C71D74 /* back-icon@2x.png in Resources */,
 				9A6D695D1A6311CB00C71D74 /* ChatIcon.png in Resources */,
 				9A6D69741A6311CB00C71D74 /* Icon-Small-50.png in Resources */,
+				9AB37F6F1A65E12300B743F1 /* MPSurvey.storyboard in Resources */,
 				9A8C09FA1A61624F007FE131 /* send-button-pressed.png in Resources */,
 				9A6D69751A6311CB00C71D74 /* Icon-Small-50@2x.png in Resources */,
 				9A6D68E91A6311CB00C71D74 /* BG.png in Resources */,
@@ -1465,12 +1571,14 @@
 				9A6D69321A6311CB00C71D74 /* form@2x.png in Resources */,
 				9A6D691E1A6311CB00C71D74 /* UserImage@2x.png in Resources */,
 				9A6D68F81A6311CB00C71D74 /* InfoIcon@2x.png in Resources */,
+				9AB37F6A1A65E12300B743F1 /* MPDismissKeyboard.png in Resources */,
 				9A6D690B1A6311CB00C71D74 /* ChatIcon.png in Resources */,
 				9A8C09FB1A61624F007FE131 /* send-button-pressed@2x.png in Resources */,
 				9A8C09F01A61624F007FE131 /* bubble-stroked.png in Resources */,
 				9A6D690F1A6311CB00C71D74 /* InfoIcon.png in Resources */,
 				9A8C09E31A61624F007FE131 /* bubble-classic-typing@2x.png in Resources */,
 				9A6D694A1A6311CB00C71D74 /* About_BG@2x.png in Resources */,
+				9AB37F691A65E12300B743F1 /* MPCheckmark@2x.png in Resources */,
 				9A6D69541A6311CB00C71D74 /* Top_NavBG@2x.png in Resources */,
 				9A6D69061A6311CB00C71D74 /* About_BG@2x.png in Resources */,
 				9A6D690D1A6311CB00C71D74 /* DislikeIcon.png in Resources */,
@@ -1510,6 +1618,7 @@
 				9A6D69721A6311CB00C71D74 /* Icon-76.png in Resources */,
 				9A8C09E91A61624F007FE131 /* bubble-classic-square-selected@2x.png in Resources */,
 				9A6D68FC1A6311CB00C71D74 /* Matched-Up@2x.png in Resources */,
+				9AB37F671A65E12300B743F1 /* MPArrowRight@2x.png in Resources */,
 				9A8C09F71A61624F007FE131 /* input-bar-background@2x.png in Resources */,
 				9A6D69571A6311CB00C71D74 /* ChatNow_Icon.png in Resources */,
 			);
@@ -1530,13 +1639,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A8C09D21A61624F007FE131 /* JSBubbleView.m in Sources */,
+				9AB37F751A65E12300B743F1 /* UIImage+MPImageEffects.m in Sources */,
 				9A56AE6B1A1A08C800D96C02 /* AppDelegate.m in Sources */,
 				9A054EE41A595F9B0068FE93 /* MatchesViewController.m in Sources */,
 				9AB37E791A65B12A00B743F1 /* TransitionAnimator.m in Sources */,
+				9AB37F761A65E12300B743F1 /* UIView+MPSnapshotImage.m in Sources */,
 				9A018DC51A1A05D1008476B4 /* main.m in Sources */,
 				9A45A8871A61652300C26DA4 /* ChatsViewController.m in Sources */,
+				9AB37F741A65E12300B743F1 /* UIImage+MPAverageColor.m in Sources */,
 				9A8C09D51A61624F007FE131 /* JSMessageSoundEffect.m in Sources */,
+				9AB37F631A65E12300B743F1 /* Mixpanel.m in Sources */,
 				9A85D55B1A1BD26B008A27BF /* ProfileViewController.m in Sources */,
+				9AB37F701A65E12300B743F1 /* MPSurveyNavigationController.m in Sources */,
+				9AB37F721A65E12300B743F1 /* MPSurveyQuestionViewController.m in Sources */,
 				9A85D5571A1BD02E008A27BF /* EditProfileViewController.m in Sources */,
 				9A68BEDB1A535F12000FFDFF /* TestUser.m in Sources */,
 				9A463FE81A1A8AB9006A816B /* LoginViewController.m in Sources */,
@@ -1546,8 +1661,11 @@
 				9A8C09D11A61624F007FE131 /* JSBubbleMessageCell.m in Sources */,
 				9A85D54F1A1BC7E9008A27BF /* HomeViewController.m in Sources */,
 				9A054EE01A595CE40068FE93 /* MatchViewController.m in Sources */,
+				9AB37F731A65E12300B743F1 /* NSData+MPBase64.m in Sources */,
 				9A8C09D61A61624F007FE131 /* JSMessagesViewController.m in Sources */,
+				9AB37F711A65E12300B743F1 /* MPSurveyQuestion.m in Sources */,
 				9A8C09D71A61624F007FE131 /* JSMessageTextView.m in Sources */,
+				9AB37F6E1A65E12300B743F1 /* MPSurvey.m in Sources */,
 				9A8C09D31A61624F007FE131 /* JSDismissiveTextView.m in Sources */,
 				9A8C09D01A61624F007FE131 /* JSBubbleImageViewFactory.m in Sources */,
 				9A8C09CD1A61624F007FE131 /* UIColor+JSMessagesView.m in Sources */,
@@ -1683,8 +1801,15 @@
 					/Users/savyna/Documents/FacebookSDK,
 					/Users/savyna/Documents/FacebookSDK/FBAudienceNetwork,
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = Freyja/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Freyja/Mixpanel",
+					/Users/savyna/dev/Xcode,
+					"Projects/mixpanel-iphone/Mixpanel",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1700,8 +1825,15 @@
 					/Users/savyna/Documents/FacebookSDK,
 					/Users/savyna/Documents/FacebookSDK/FBAudienceNetwork,
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = Freyja/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Freyja/Mixpanel",
+					/Users/savyna/dev/Xcode,
+					"Projects/mixpanel-iphone/Mixpanel",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

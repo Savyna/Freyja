@@ -11,8 +11,9 @@
 #import "MatchViewController.h"
 #import "TransitionAnimator.h"
 #import "Constants.h"
-#import <Parse/Parse.h>
 #import "TestUser.h"
+#import <Parse/Parse.h>
+#import "Mixpanel.h"
 
 @interface HomeViewController () <MatchViewControllerDelegate, ProfileViewControllerDelegate, UIViewControllerTransitioningDelegate>
 
@@ -137,11 +138,19 @@
 
 - (IBAction)likeButtonPressed:(UIButton *)sender
 {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Like"];
+    [mixpanel flush];
+    
     [self checkLike];
 }
 
 - (IBAction)dislikeButtonPressed:(UIButton *)sender
 {
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
+    [mixpanel track:@"Dislike"];
+    [mixpanel flush];
+    
     [self checkDislike];
 }
 
