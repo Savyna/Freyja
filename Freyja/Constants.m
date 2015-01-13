@@ -12,15 +12,15 @@
 
 #pragma mark - User Class
 
-NSString *const KUserTagLineKey                     = @"tagLine";
+NSString *const kUserTagLineKey                     = @"tagLine";
 
 NSString *const kUserProfileKey                     = @"profile";
-NSString *const KUserProfileNameKey                 = @"name";
-NSString *const KUserProfileFirstNameKey            = @"firstName";
-NSString *const KUserProfileLocationKey             = @"location";
-NSString *const KUserProfileGenderKey               = @"gender";
-NSString *const KUserProfileBirthdayKey             = @"birthday";
-NSString *const KUserProfileInterestedInKey         = @"interestedIn";
+NSString *const kUserProfileNameKey                 = @"name";
+NSString *const kUserProfileFirstNameKey            = @"firstName";
+NSString *const kUserProfileLocationKey             = @"location";
+NSString *const kUserProfileGenderKey               = @"gender";
+NSString *const kUserProfileBirthdayKey             = @"birthday";
+NSString *const kUserProfileInterestedInKey         = @"interestedIn";
 NSString *const kUserProfilePictureURL              = @"pictureURL";
 NSString *const kUserProfileRelationshipStatusKey   = @"relationshipStatus";
 NSString *const kUserProfileAgeKey                  = @"age";

@@ -33,7 +33,8 @@
             [newUser setObject:profile forKey:@"profile"];
             [newUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 
-                UIImage *profileImage   = [UIImage imageNamed:@"SOA.png"];
+                UIImage *profileImage   = [UIImage imageNamed:@"User_Image.jpg"];
+                NSLog(@"%@", profileImage);
                 NSData *imageData       = UIImageJPEGRepresentation(profileImage, 0.8);
                 PFFile *photoFile       = [PFFile fileWithData:imageData];
                 

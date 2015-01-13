@@ -9,21 +9,23 @@
 #import "HomeViewController.h"
 #import "ProfileViewController.h"
 #import "MatchViewController.h"
+#import "TransitionAnimator.h"
 #import "Constants.h"
 #import <Parse/Parse.h>
 #import "TestUser.h"
 
-@interface HomeViewController () <MatchViewControllerDelegate>
+@interface HomeViewController () <MatchViewControllerDelegate, ProfileViewControllerDelegate, UIViewControllerTransitioningDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *chatBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *settingsBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *firstNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ageLabel;
-@property (strong, nonatomic) IBOutlet UILabel *tagLineLabel;
 @property (strong, nonatomic) IBOutlet UIButton *likeButton;
 @property (strong, nonatomic) IBOutlet UIButton *infoButton;
 @property (strong, nonatomic) IBOutlet UIButton *dislikeButton;
+@property (strong, nonatomic) IBOutlet UIView *labelContainerView;
+@property (strong, nonatomic) IBOutlet UIView *buttonContainerVIew;
 
 @property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) PFObject *photo;
@@ -42,6 +44,7 @@
     // Do any additional setup after loading the view.
     
     //[TestUser saveTestUserToParse];
+    [self setupViews];
     
     // do additional
 }
@@ -79,6 +82,24 @@
     }];
 }
 
+- (void)setupViews
+{
+    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    [self addShadowForView:self.buttonContainerVIew];
+    [self addShadowForView:self.labelContainerView];
+    
+    self.photoImageView.layer.masksToBounds = YES;
+}
+
+- (void)addShadowForView:(UIView *)view
+{
+    view.layer.masksToBounds    = NO;
+    view.layer.cornerRadius     = 4;
+    view.layer.shadowRadius     = 1;
+    view.layer.shadowOffset     = CGSizeMake(0, 1);
+    view.layer.shadowOpacity    = 0.25;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -92,20 +113,23 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    NSLog(@"prepareForSegue called in HomeViewController");
-    NSLog(@"segue.identifier: %@, %@", segue.identifier, sender);
+    NSLog(@"prepareForSegue called in HomeViewController using: %@", segue.identifier);
     
     if ( [segue.identifier isEqualToString:@"homeToProfileSegue"] ) {
         
-        ProfileViewController *profileVC = segue.destinationViewController;
-        profileVC.photo = self.photo;
+        ProfileViewController *profileVC    = segue.destinationViewController;
+        profileVC.photo                     = self.photo;
+        profileVC.delegate                  = self;
     }
-    else if ( [segue.identifier isEqualToString:@"homeToMatchSegue"] ) {
-
-        MatchViewController *matchVC    = segue.destinationViewController;
-        matchVC.matchedUserImage        = self.photoImageView.image;
-        matchVC.delegate                = self;
-    }
+    // Deprecated since we are using the animator
+//    else if ( [segue.identifier isEqualToString:@"homeToMatchSegue"] ){
+//        NSLog(@"Entering homeToMatchSegue");
+//
+//        MatchViewController *matchVC        = segue.destinationViewController;
+//        matchVC.matchedUserImage            = self.photoImageView.image;
+//        matchVC.delegate                    = self;
+//        
+//    }
 }
 
 
@@ -128,7 +152,7 @@
 
 - (IBAction)chatBarButtonPressed:(UIBarButtonItem *)sender
 {
-    
+    [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
 }
 
 - (IBAction)settingsBarButtonItemPressed:(UIBarButtonItem *)sender
@@ -207,9 +231,8 @@
 
 - (void)updateView
 {
-    self.firstNameLabel.text    = self.photo[kPhotoUserKey][kUserProfileKey][KUserProfileFirstNameKey];
+    self.firstNameLabel.text    = self.photo[kPhotoUserKey][kUserProfileKey][kUserProfileFirstNameKey];
     self.ageLabel.text          = [NSString stringWithFormat:@"%@", self.photo[kPhotoUserKey][kUserProfileKey][kUserProfileAgeKey]];
-    self.tagLineLabel.text      = self.photo[kPhotoUserKey][KUserTagLineKey];
 }
 
 - (void)setupNextPhoto
@@ -243,7 +266,7 @@
     PFUser *user      = photo[kPhotoUserKey];
     
     int userAge       = [user[kUserProfileKey][kUserProfileAgeKey] intValue];
-    NSString *gender  = user[kUserProfileKey][KUserProfileGenderKey];
+    NSString *gender  = user[kUserProfileKey][kUserProfileGenderKey];
     NSString *relationshipStatus = user[kUserProfileKey][kUserProfileRelationshipStatusKey];
     
     if ( userAge > maxAge ) {
@@ -400,8 +423,18 @@
                 if ( error ) {
                     NSLog(@"%@", error);
                 }
-
-                [self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
+                
+                // Replaced by the custom transition
+                //[self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
+                
+                UIStoryboard *myStoryboard                  = self.storyboard;
+                MatchViewController *matchViewController    = [myStoryboard instantiateViewControllerWithIdentifier:@"matchVC"];
+                matchViewController.view.backgroundColor    = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:.75];
+                matchViewController.transitioningDelegate   = self;
+                matchViewController.matchedUserImage        = self.photoImageView.image;
+                matchViewController.delegate                = self;
+                matchViewController.modalPresentationStyle  = UIModalPresentationCustom;
+                [self presentViewController:matchViewController animated:YES completion:nil];
             }];
         }
     }];
@@ -409,12 +442,45 @@
 
 #pragma mark - MatchViewControllerDelegate
 
-- (void) presentMatchesViewController
+-(void)presentMatchesViewController
 {
-    NSLog(@"presentMatchesViewController called");
+    NSLog(@"Enter presentMatchesViewController");
     [self dismissViewControllerAnimated:NO completion:^{
         [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
     }];
+}
+
+#pragma mark - ProfileViewControllerDelegate
+
+- (void)didPressLike
+{
+    NSLog(@"called didPressLike in ProfileViewControllerDelegate");
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    [self checkLike];
+}
+
+- (void)didPressDislike
+{
+    NSLog(@"called didPressDislike in ProfileViewControllerDelegate");
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    [self checkDislike];
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate
+
+-(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    TransitionAnimator *animator    = [[TransitionAnimator alloc] init];
+    animator.presenting             = YES;
+    return animator;
+}
+
+-(id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    TransitionAnimator *animator    = [[TransitionAnimator alloc] init];
+    return animator;
 }
 
 @end

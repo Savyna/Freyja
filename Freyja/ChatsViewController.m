@@ -32,12 +32,15 @@
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     self.delegate   = self;
     self.dataSource = self;
     
-    [[JSBubbleView appearance] setFont:[UIFont systemFontOfSize:16.0f]];
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+
+    // [[JSBubbleView appearance] setFont:[UIFont systemFontOfSize:16.0f]];
+    [[JSBubbleView appearance] setFont:[UIFont fontWithName:@"HelveticaNeue" size:17.0f]];
     self.messageInputView.textView.placeHolder = @"New Message";
     [self setBackgroundColor:[UIColor whiteColor]];
     
@@ -51,7 +54,7 @@
         self.withUser = self.chatRoom[kChatRoomUser1Key];
     }
     
-    self.title                  = self.withUser[kUserProfileKey][KUserProfileFirstNameKey];
+    self.title                  = self.withUser[kUserProfileKey][kUserProfileFirstNameKey];
     self.initialLoadComplete    = NO;
     
     [self checkForNewChats];
@@ -130,7 +133,7 @@
     PFUser *testFromUser    = chat[kChatFromUserKey];
     
     if ( [testFromUser.objectId isEqual:self.currentUser.objectId ] ) {
-        return [JSBubbleImageViewFactory bubbleImageViewForType:type color:[UIColor js_bubbleGreenColor]];
+        return [JSBubbleImageViewFactory bubbleImageViewForType:type color:[UIColor js_bubbleBlueColor]];
     }
     else {
         return [JSBubbleImageViewFactory bubbleImageViewForType:type color:[UIColor js_bubbleLightGrayColor]];

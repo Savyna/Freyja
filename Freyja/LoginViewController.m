@@ -109,20 +109,20 @@
             // NSLog(@"%@", result);
             
             if ( userDictionary[@"name"] ) {
-                userProfile[KUserProfileNameKey] = userDictionary[@"name"];
+                userProfile[kUserProfileNameKey] = userDictionary[@"name"];
             }
             if ( userDictionary[@"first_name"]  ) {
-                userProfile[KUserProfileFirstNameKey] = userDictionary[@"first_name"];
+                userProfile[kUserProfileFirstNameKey] = userDictionary[@"first_name"];
             }
             if ( userDictionary[@"location"][@"name"] ) {
-                userProfile[KUserProfileLocationKey] = userDictionary[@"location"][@"name"];
+                userProfile[kUserProfileLocationKey] = userDictionary[@"location"][@"name"];
             }
             if ( userDictionary[@"gender"] ) {
-                userProfile[KUserProfileGenderKey] = userDictionary[@"gender"];
+                userProfile[kUserProfileGenderKey] = userDictionary[@"gender"];
             }
             if ( userDictionary[@"birthday"] ) {
                 
-                userProfile[KUserProfileBirthdayKey] = userDictionary[@"birthday"];
+                userProfile[kUserProfileBirthdayKey] = userDictionary[@"birthday"];
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
                 [formatter setDateStyle:NSDateFormatterShortStyle];
                 
@@ -133,7 +133,7 @@
                 userProfile[kUserProfileAgeKey] = @(age);
             }
             if ( userDictionary[@"interested_in"] ) {
-                userProfile[KUserProfileInterestedInKey] = userDictionary[@"interested_in"];
+                userProfile[kUserProfileInterestedInKey] = userDictionary[@"interested_in"];
             }
             if ( userDictionary[@"relationship_status"] ) {
                 userProfile[kUserProfileRelationshipStatusKey] = userDictionary[@"relationship_status"];

@@ -65,13 +65,16 @@
 
 #pragma mark - IBActions
 
-- (IBAction)viewChatsButtonPressed:(UIButton *)sender
+- (IBAction)viewChatsButtonPressed:(id)sender
 {
+    NSLog(@"Enter viewChatsButtonPressed");
     [self.delegate presentMatchesViewController];
 }
 
-- (IBAction)keepSearchingButtonPressed:(UIButton *)sender
+
+- (IBAction)keepSearchingButtonPressed:(id)sender
 {
+    NSLog(@"Enter keepSearchingButtonPressed");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
