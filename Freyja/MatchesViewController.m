@@ -38,6 +38,7 @@
     self.tableView.dataSource   = self;
 
     [self updateAvailableChatRooms];
+    NSLog(@"Enter MatchesViewController");
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,6 +96,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell           = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     PFObject *chatRoom              = [self.avaliableChatRooms objectAtIndex:indexPath.row];
@@ -109,10 +111,11 @@
         likedUser = [chatRoom objectForKey:@"user1"];
     }
     
-    cell.textLabel.text = likedUser[@"profile"][@"firstName"];
+    cell.textLabel.text = likedUser[@"profile"][@"name"];
+    cell.detailTextLabel.text = @"";
 
     // cell.imageView.image = placeholder image
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     PFQuery *queryForPhoto = [[PFQuery alloc] initWithClassName:@"Photo"];
     [queryForPhoto whereKey:@"user" equalTo:likedUser];
@@ -126,8 +129,20 @@
             
             [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                 
+                // Rounded Image
+                cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width / 2;
+                cell.imageView.clipsToBounds = YES;
+                
                 cell.imageView.image        = [UIImage imageWithData:data];
-                cell.imageView.contentMode  = UIViewContentModeScaleAspectFit;
+                cell.imageView.contentMode  = UIViewContentModeScaleAspectFill;
+                
+                CGSize itemSize = CGSizeMake(58, 58);
+                UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+                CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+                [cell.imageView.image drawInRect:imageRect];
+                cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+
             }];
         }
     }];

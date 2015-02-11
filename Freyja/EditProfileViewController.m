@@ -14,7 +14,8 @@
 
 @property (strong, nonatomic) IBOutlet UITextView *tagLineTextView;
 @property (strong, nonatomic) IBOutlet UIImageView *profilePictureImageView;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *saveBarButtonItem;
+
+- (IBAction)saveBarButtonItem:(id)sender;
 
 @end
 
@@ -23,7 +24,11 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+
+
     // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameDidChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
     self.tagLineTextView.delegate = self;
     // self.view.backgroundColor = [UIColor colorWithRed: 242/255.0 green: 242/255.0 blue: 242/255.0 alpha: 1.0];
@@ -37,7 +42,9 @@
             PFFile *pictureFile = photo[kPhotoPictureKey];
             
             [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                
                 self.profilePictureImageView.image = [UIImage imageWithData:data];
+                
             }];
         }
     }];
@@ -50,6 +57,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)keyboardFrameDidChange:(NSNotification *)notification
+{
+    CGRect keyboardEndFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect keyboardBeginFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    UIViewAnimationCurve animationCurve = [[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    NSTimeInterval animationDuration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] integerValue];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:animationCurve];
+    
+    CGRect newFrame = self.view.frame;
+    CGRect keyboardFrameEnd = [self.view convertRect:keyboardEndFrame toView:nil];
+    CGRect keyboardFrameBegin = [self.view convertRect:keyboardBeginFrame toView:nil];
+    
+    newFrame.origin.y -= (keyboardFrameBegin.origin.y - keyboardFrameEnd.origin.y);
+    self.view.frame = newFrame;
+    
+    [UIView commitAnimations];
+}
 /*
 #pragma mark - Navigation
 
@@ -60,6 +87,7 @@
 }
 */
 
+/*
 #pragma mark - TextView Delegate
 
 -(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -75,6 +103,14 @@
     else {
         return YES;
     }
-}
+}*/
 
+#pragma mark - IBActions
+
+- (IBAction)saveBarButtonItem:(id)sender
+{
+    [[PFUser currentUser] setObject:self.tagLineTextView.text forKey:kUserTagLineKey];
+    [[PFUser currentUser] saveInBackground];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

@@ -1,0 +1,66 @@
+
+/* Class = "IBUIButton"; normalTitle = "Login with Facebook"; ObjectID = "30C-Ga-E2D"; */
+"30C-Ga-E2D.normalTitle" = "Login with Facebook";
+
+/* Class = "IBUILabel"; text = "Subtitle"; ObjectID = "8UE-ew-tdF"; */
+"8UE-ew-tdF.text" = "Subtitle";
+
+/* Class = "IBUINavigationItem"; title = "Matches!"; ObjectID = "Abi-ob-6bn"; */
+"Abi-ob-6bn.title" = "Matches!";
+
+/* Class = "IBUILabel"; text = "New York, New York"; ObjectID = "DwE-Rm-hkm"; */
+"DwE-Rm-hkm.text" = "New York, New York";
+
+/* Class = "IBUILabel"; text = "Show Age"; ObjectID = "FLa-J1-evR"; */
+"FLa-J1-evR.text" = "Show Age";
+
+/* Class = "IBUIButton"; normalTitle = "Edit Profile"; ObjectID = "H1F-nM-nk9"; */
+"H1F-nM-nk9.normalTitle" = "Edit Profile";
+
+/* Class = "IBUILabel"; text = "Single"; ObjectID = "LgK-Om-YkK"; */
+"LgK-Om-YkK.text" = "Single";
+
+/* Class = "IBUILabel"; text = "Relationship Status"; ObjectID = "OXU-JW-V6m"; */
+"OXU-JW-V6m.text" = "Relationship Status";
+
+/* Class = "IBUILabel"; text = "firstName"; ObjectID = "SkU-6A-jxb"; */
+"SkU-6A-jxb.text" = "firstName";
+
+/* Class = "IBUINavigationItem"; title = "Freyja"; ObjectID = "Wfu-0s-dfl"; */
+"Wfu-0s-dfl.title" = "Freyja";
+
+/* Class = "IBUILabel"; text = "About me"; ObjectID = "WvA-5a-4Al"; */
+"WvA-5a-4Al.text" = "About me";
+
+/* Class = "IBUILabel"; text = "age"; ObjectID = "be7-kG-2Hx"; */
+"be7-kG-2Hx.text" = "age";
+
+/* Class = "IBUILabel"; text = "18"; ObjectID = "biN-YK-Hlp"; */
+"biN-YK-Hlp.text" = "18";
+
+/* Class = "IBUILabel"; text = "Show Men"; ObjectID = "cJu-MU-tdH"; */
+"cJu-MU-tdH.text" = "Show Men";
+
+/* Class = "IBUILabel"; text = "26"; ObjectID = "fRp-UA-FTa"; */
+"fRp-UA-FTa.text" = "26";
+
+/* Class = "IBUINavigationItem"; title = "Settings"; ObjectID = "oJd-j9-d8c"; */
+"oJd-j9-d8c.title" = "Settings";
+
+/* Class = "IBUILabel"; text = "    About me"; ObjectID = "pY4-KD-Uuc"; */
+"pY4-KD-Uuc.text" = "    About me";
+
+/* Class = "IBUILabel"; text = "Singles Only"; ObjectID = "qNF-RT-Ma7"; */
+"qNF-RT-Ma7.text" = "Singles Only";
+
+/* Class = "IBUIButton"; normalTitle = "Logout"; ObjectID = "r5v-rN-zrH"; */
+"r5v-rN-zrH.normalTitle" = "Logout";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "tO8-7D-CC3"; */
+"tO8-7D-CC3.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Show Women"; ObjectID = "yey-fx-X3s"; */
+"yey-fx-X3s.text" = "Show Women";
+
+/* Class = "IBUILabel"; text = "It's a Match!"; ObjectID = "zj4-vL-YLX"; */
+"zj4-vL-YLX.text" = "It's a Match!";

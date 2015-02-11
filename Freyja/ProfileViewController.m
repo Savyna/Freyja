@@ -15,7 +15,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ageLabel;
 @property (strong, nonatomic) IBOutlet UILabel *statusLabel;
-@property (strong, nonatomic) IBOutlet UILabel *tagLineLabel;
+@property (strong, nonatomic) IBOutlet UITextView *tagLineTextView;
+@property (strong, nonatomic) IBOutlet UIView *likeButtonContainerView;
+@property (strong, nonatomic) IBOutlet UIView *dislikeButtonContainerView;
 
 @end
 
@@ -34,8 +36,13 @@
     
     PFUser *user = self.photo[kPhotoUserKey];
 
-    self.locationLabel.text = user[kUserProfileKey][kUserProfileLocationKey];
-    self.ageLabel.text      = [NSString stringWithFormat:@"%@", user[kUserProfileKey][kUserProfileAgeKey]];
+    
+    if ( user[kUserProfileKey][kUserProfileLocationKey] == nil ) {
+        self.locationLabel.text = @"No location avaiable";
+    }
+    else {
+        self.locationLabel.text = user[kUserProfileKey][kUserProfileLocationKey];
+    }
     
     if ( user[kUserProfileKey][kUserProfileRelationshipStatusKey] == nil ) {
         self.statusLabel.text = @"Single";
@@ -44,9 +51,28 @@
         self.statusLabel.text = user[kUserProfileKey][kUserProfileRelationshipStatusKey];
     }
     
-    self.tagLineLabel.text      = user[kUserTagLineKey];
+    if ( user[kUserTagLineKey] == nil ) {
+        self.tagLineTextView.text = @"No more additional information avaiable.";
+    }
+    else {
+        self.tagLineTextView.text = user[kUserTagLineKey];
+    }
+    
+    self.ageLabel.text          = [NSString stringWithFormat:@"%@", user[kUserProfileKey][kUserProfileAgeKey]];
+    
     self.view.backgroundColor   = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    [self addShadowForView:self.likeButtonContainerView];
+    [self addShadowForView:self.dislikeButtonContainerView];
     self.title                  = user[kUserProfileKey][kUserProfileFirstNameKey];
+}
+
+- (void)addShadowForView:(UIView *)view
+{
+    view.layer.masksToBounds    = NO;
+    view.layer.cornerRadius     = 4;
+    view.layer.shadowRadius     = 1;
+    view.layer.shadowOffset     = CGSizeMake(0, 1);
+    view.layer.shadowOpacity    = 0.25;
 }
 
 - (void)didReceiveMemoryWarning {

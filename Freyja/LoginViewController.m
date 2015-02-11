@@ -57,6 +57,7 @@
 
 - (IBAction)loginButtonPressed:(UIButton *)sender
 {
+    NSLog(@"loginButtonPressed");
     // Unhide the activity indicator and start animating it
     self.activityIndicator.hidden = NO;
     [self.activityIndicator startAnimating];
@@ -69,6 +70,7 @@
         [self.activityIndicator stopAnimating];
         self.activityIndicator.hidden = YES;
         if ( !user ) {
+
             if ( !error ) {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Login Error" message:@"The Facebook Login was Canceled" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                 [alertView show];
@@ -80,6 +82,7 @@
         }
         else {
             // If the sign in is successful we update the users information and perform the segue to the Home Controller in the completion block.
+            NSLog(@"Sign in success!");
             [self updateUserInformation];
             [self performSegueWithIdentifier:@"loginToHomeSegue" sender:self];
         }
@@ -90,6 +93,7 @@
 
 - (void)updateUserInformation
 {
+    NSLog(@"updateUserInformation");
     // Issue a request to Facebook for the information we asked for access to in the permissions array
     FBRequest *request = [FBRequest requestForMe];
     
@@ -190,6 +194,7 @@
 // Request our image from Parse
 - (void)requestImage
 {
+    NSLog(@"requestImage called");
     // Create a query for the Photo class. Then constrain the query to search for only Photos for the current user. Finally, ask for the count of the number of Photos for the current user
     PFQuery *query = [PFQuery queryWithClassName:kPhotoClassKey];
     [query whereKey:kPhotoUserKey equalTo:[PFUser currentUser]];
@@ -220,6 +225,7 @@
 // Method will recieve the data from facebook's API and we will build our property imageData with the data.
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+    NSLog(@"receiving data from facebook's API");
     // As chuncks of the image are received, we build our data file
     [self.imageData appendData:data];
 }

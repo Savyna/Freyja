@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
 @property (strong, nonatomic) IBOutlet UIButton *editProfileButton;
 @property (strong, nonatomic) IBOutlet UILabel *ageLabel;
+@property (strong, nonatomic) IBOutlet UIView *filterContentView;
+
 
 @end
 
@@ -26,6 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor   = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    [self addShadowForView:self.filterContentView];
+    
     // Do any additional setup after loading the view.
     self.ageSlider.value    = [[NSUserDefaults standardUserDefaults] integerForKey:kAgeMaxKey];
     self.menSwitch.on       = [[NSUserDefaults standardUserDefaults] boolForKey:kMenEnabledKey];
@@ -38,6 +44,15 @@
     [self.singleSwitch addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
     
     self.ageLabel.text      = [NSString stringWithFormat:@"%i", (int)self.ageSlider.value];
+}
+
+- (void)addShadowForView:(UIView *)view
+{
+    view.layer.masksToBounds    = NO;
+    view.layer.cornerRadius     = 4;
+    view.layer.shadowRadius     = 1;
+    view.layer.shadowOffset     = CGSizeMake(0, 1);
+    view.layer.shadowOpacity    = 0.25;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,13 +9,13 @@
 #import "HomeViewController.h"
 #import "ProfileViewController.h"
 #import "MatchViewController.h"
-#import "TransitionAnimator.h"
+//#import "TransitionAnimator.h"
 #import "Constants.h"
 #import "TestUser.h"
 #import <Parse/Parse.h>
 #import "Mixpanel.h"
 
-@interface HomeViewController () <MatchViewControllerDelegate, ProfileViewControllerDelegate, UIViewControllerTransitioningDelegate>
+@interface HomeViewController () <MatchViewControllerDelegate, ProfileViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *chatBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *settingsBarButtonItem;
@@ -35,6 +35,7 @@
 @property (nonatomic) int currentPhotoIndex;
 @property (nonatomic) BOOL isLikedByCurrentUser;
 @property (nonatomic) BOOL isDislikedByCurrentUser;
+
 
 @end
 
@@ -64,23 +65,27 @@
     // Query to the Photo Class in Parse
     PFQuery *query = [PFQuery queryWithClassName:kPhotoClassKey];
     [query whereKey:kPhotoUserKey notEqualTo:[PFUser currentUser]];
-    [query includeKey:kPhotoUserKey];
     
+    [query includeKey:kPhotoUserKey];
+
     // Asynchronous access Parse API and get the items in a background thread
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if ( !error ) {
-            
+            //NSLog(@"Photos: %@", objects);
             self.photos = objects;
             
             if ( [self allowPhoto] == NO ) {
                 [self setupNextPhoto];
             }
             else {
+
                 [self queryForCurrentPhotoIndex];
             }
         }
         else NSLog(@"%@", error);
     }];
+
+
 }
 
 - (void)setupViews
@@ -123,14 +128,14 @@
         profileVC.delegate                  = self;
     }
     // Deprecated since we are using the animator
-//    else if ( [segue.identifier isEqualToString:@"homeToMatchSegue"] ){
-//        NSLog(@"Entering homeToMatchSegue");
-//
-//        MatchViewController *matchVC        = segue.destinationViewController;
-//        matchVC.matchedUserImage            = self.photoImageView.image;
-//        matchVC.delegate                    = self;
-//        
-//    }
+    else if ( [segue.identifier isEqualToString:@"homeToMatchSegue"] ){
+        NSLog(@"Entering homeToMatchSegue");
+        //NSLog(@"====> PICTURE : %@", sender);
+        MatchViewController *matchVC        = segue.destinationViewController;
+        matchVC.matchedUserImage            = sender;
+        matchVC.delegate                    = self;
+        
+    }
 }
 
 
@@ -170,6 +175,10 @@
     
 }
 
+- (IBAction)nextButtonPressed:(UIButton *)sender
+{
+    [self setupNextPhoto];
+}
 #pragma mark - Helper Methods
 
 - (void)queryForCurrentPhotoIndex
@@ -207,6 +216,7 @@
             if ( !error ) {
                 
                 self.activities = [objects mutableCopy];
+                //NSLog(@"%@", self.activities);
                 
                 if ( [self.activities count] == 0 ) {
                     
@@ -220,6 +230,8 @@
                         
                         self.isLikedByCurrentUser    = YES;
                         self.isDislikedByCurrentUser = NO;
+                        
+                        //[self setupNextPhoto];
                     }
                     else if ( [activity[kActivityTypeKey] isEqualToString:kActivityTypeDislikeKey] ) {
                         
@@ -297,6 +309,7 @@
 
 - (void)saveLike
 {
+    NSLog(@"Save like called");
     // Creates a new class called Activity in Parse
     PFObject *likeActivity = [PFObject objectWithClassName:kActivityClassKey];
     
@@ -313,8 +326,9 @@
         self.isDislikedByCurrentUser    = NO;
         [self.activities addObject:likeActivity];
         
-        [self checkForPhotoUserLikes];
+        [self checkForPhotoUserLikes: self.photo[kPhotoUserKey] withImage:self.photoImageView.image];
         // Setup the next photo, and save the like of the current one to Parse
+
         [self setupNextPhoto];
     }];
 }
@@ -344,8 +358,9 @@
 
 - (void)checkLike
 {
+    NSLog(@"checkLike");
     if ( self.isLikedByCurrentUser ) {
-        
+        NSLog(@"Already Liked!!");
         [self setupNextPhoto];
         return;
     }
@@ -364,8 +379,9 @@
 
 - (void)checkDislike
 {
+    NSLog(@"checkDislike");
     if ( self.isDislikedByCurrentUser ) {
-        
+        NSLog(@"Already Disliked!!");
         [self setupNextPhoto];
         return;
     }
@@ -382,34 +398,42 @@
     }
 }
 
-- (void)checkForPhotoUserLikes
+- (void)checkForPhotoUserLikes:(id)user withImage:(id)image
 {
     PFQuery *query = [PFQuery queryWithClassName:kActivityClassKey];
     
-    [query whereKey:kActivityFromUserKey equalTo:self.photo[kPhotoUserKey]];
+    //NSLog(@"======> Current user. %@", [PFUser currentUser]);
+    //NSLog(@"======> Other user: %@", user);
+    
+    [query whereKey:kActivityFromUserKey equalTo:user];
     [query whereKey:kActivityToUserKey equalTo:[PFUser currentUser]];
     [query whereKey:kActivityTypeKey equalTo:kActivityTypeLikeKey];
-    
+    [query includeKey:kPhotoUserKey];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if ( [objects count] > 0 ) {
             // create our chatroom
-            [self createChatRoom];
+            //NSLog(@"ckeckForPhotoUserLikes objects: %@", objects);
+            [self createChatRoom: user withImage:image];
         }
     }];
+
 }
 
-- (void)createChatRoom
+- (void)createChatRoom:(id)user withImage:(id)image
 {
     NSLog(@"createChatRoom called");
+    
+    //NSLog(@"Current user. %@", [PFUser currentUser]);
+    //NSLog(@"Other user: %@", user);
     
     PFQuery *queryForChatRoom = [PFQuery queryWithClassName:kChatRoomClassKey];
     
     [queryForChatRoom whereKey:kChatRoomUser1Key equalTo:[PFUser currentUser]];
-    [queryForChatRoom whereKey:kChatRoomUser2Key equalTo:self.photo[kPhotoUserKey]];
+    [queryForChatRoom whereKey:kChatRoomUser2Key equalTo:user];
     
     PFQuery *queryForChatRoomInverse = [PFQuery queryWithClassName:kChatRoomClassKey];
-    [queryForChatRoomInverse whereKey:kChatRoomUser1Key equalTo:self.photo[kPhotoUserKey]];
+    [queryForChatRoomInverse whereKey:kChatRoomUser1Key equalTo:user];
     [queryForChatRoomInverse whereKey:kChatRoomUser2Key equalTo:[PFUser currentUser]];
     
     PFQuery *combinedQuery = [PFQuery orQueryWithSubqueries:@[queryForChatRoom, queryForChatRoomInverse]];
@@ -425,25 +449,26 @@
 
             PFObject *chatroom = [PFObject objectWithClassName:kChatRoomClassKey];
             [chatroom setObject:[PFUser currentUser] forKey:kChatRoomUser1Key];
-            [chatroom setObject:self.photo[kPhotoUserKey] forKey:kChatRoomUser2Key];
+            [chatroom setObject:user forKey:kChatRoomUser2Key];
             
             [chatroom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                NSLog(@"Success: %i", succeeded);
+//                NSLog(@"Success: %i", succeeded);
                 if ( error ) {
                     NSLog(@"%@", error);
                 }
                 
-                // Replaced by the custom transition
-                //[self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
-                
-                UIStoryboard *myStoryboard                  = self.storyboard;
-                MatchViewController *matchViewController    = [myStoryboard instantiateViewControllerWithIdentifier:@"matchVC"];
-                matchViewController.view.backgroundColor    = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:.75];
-                matchViewController.transitioningDelegate   = self;
-                matchViewController.matchedUserImage        = self.photoImageView.image;
-                matchViewController.delegate                = self;
-                matchViewController.modalPresentationStyle  = UIModalPresentationCustom;
-                [self presentViewController:matchViewController animated:YES completion:nil];
+
+                [self performSegueWithIdentifier:@"homeToMatchSegue" sender:image];
+
+                  // Custom transition not compatible with ios8
+//                UIStoryboard *myStoryboard                  = self.storyboard;
+//                MatchViewController *matchViewController    = [myStoryboard instantiateViewControllerWithIdentifier:@"matchVC"];
+//                matchViewController.view.backgroundColor    = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:.75];
+//                matchViewController.transitioningDelegate   = self;
+//                matchViewController.matchedUserImage        = self.photoImageView.image;
+//                matchViewController.delegate                = self;
+//                matchViewController.modalPresentationStyle  = UIModalPresentationCustom;
+//                [self presentViewController:matchViewController animated:YES completion:nil];
             }];
         }
     }];
@@ -476,7 +501,7 @@
     
     [self checkDislike];
 }
-
+/*
 #pragma mark - UIViewControllerTransitioningDelegate
 
 -(id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
@@ -491,5 +516,5 @@
     TransitionAnimator *animator    = [[TransitionAnimator alloc] init];
     return animator;
 }
-
+*/
 @end

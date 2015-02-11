@@ -16,6 +16,9 @@
 @property (strong, nonatomic) IBOutlet UIImageView *currentUserImageView;
 @property (strong, nonatomic) IBOutlet UIButton *viewChatsButton;
 @property (strong, nonatomic) IBOutlet UIButton *keepSearchingButton;
+@property (strong, nonatomic) IBOutlet UIView *matchContainerView;
+@property (strong, nonatomic) IBOutlet UIView *user1ContainerView;
+@property (strong, nonatomic) IBOutlet UIView *user2ContainerView;
 
 @end
 
@@ -26,6 +29,13 @@
     
     // Do any additional setup after loading the view.
 
+    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    [self addShadowForView:self.matchContainerView];
+    [self addShadowForView:self.user1ContainerView];
+    [self addShadowForView:self.user2ContainerView];
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"gplaypattern_@2X.png"]];
+    
     PFQuery *query = [PFQuery queryWithClassName:kPhotoClassKey];
     
     [query whereKey:kPhotoUserKey equalTo:[PFUser currentUser]];
@@ -40,10 +50,21 @@
             [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                 
                 self.currentUserImageView.image = [UIImage imageWithData:data];
+                self.currentUserImageView.contentMode  = UIViewContentModeScaleAspectFit;
                 self.matchedUserImageView.image = self.matchedUserImage;
+                self.matchedUserImageView.contentMode  = UIViewContentModeScaleAspectFit;
             }];
         }
     }];
+}
+
+- (void)addShadowForView:(UIView *)view
+{
+    view.layer.masksToBounds    = NO;
+    view.layer.cornerRadius     = 4;
+    view.layer.shadowRadius     = 1;
+    view.layer.shadowOffset     = CGSizeMake(0, 1);
+    view.layer.shadowOpacity    = 0.25;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,14 +88,14 @@
 
 - (IBAction)viewChatsButtonPressed:(id)sender
 {
-    NSLog(@"Enter viewChatsButtonPressed");
+//    NSLog(@"Enter viewChatsButtonPressed");
     [self.delegate presentMatchesViewController];
 }
 
 
 - (IBAction)keepSearchingButtonPressed:(id)sender
 {
-    NSLog(@"Enter keepSearchingButtonPressed");
+//    NSLog(@"Enter keepSearchingButtonPressed");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

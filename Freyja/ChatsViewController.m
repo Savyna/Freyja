@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL initialLoadComplete;
 
 @property (strong, nonatomic) NSMutableArray *chats;
+@property (strong, nonatomic) PFObject *photo;
 
 @end
 
@@ -72,16 +73,17 @@
     self.chatsTimer = nil;
 }
 
-/*
-#pragma mark - Navigation
 
+#pragma mark - Navigation
+/*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ 
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
 */
-
+ 
 #pragma mark - TableView DataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
