@@ -105,7 +105,7 @@
             
             // create URL
             NSString *facebookID = userDictionary[@"id"];
-            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=350&height=350&return_ssl_resources=1", facebookID]];
             
             NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] initWithCapacity:8];
 
