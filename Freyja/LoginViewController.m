@@ -64,7 +64,7 @@
     
     // Create an array with the information we will request access to from our user.
     NSArray *permissionsArray = @[@"user_about_me", @"user_interests", @"user_relationships", @"user_birthday", @"user_location", @"user_relationship_details"];
-    
+//    NSLog(@"%@",permissionsArray);
     // Use PFFacebookUtilis to request permission to login with facebook.
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         [self.activityIndicator stopAnimating];
@@ -108,9 +108,9 @@
             NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=350&height=350&return_ssl_resources=1", facebookID]];
             
             NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] initWithCapacity:8];
-
+            NSLog(@"%@", userDictionary);
             // Use this to log the response into the console.
-            // NSLog(@"%@", result);
+             NSLog(@"%@", result);
             
             if ( userDictionary[@"name"] ) {
                 userProfile[kUserProfileNameKey] = userDictionary[@"name"];

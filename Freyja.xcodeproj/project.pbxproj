@@ -50,6 +50,7 @@
 		9A463FE81A1A8AB9006A816B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A463FE71A1A8AB9006A816B /* LoginViewController.m */; };
 		9A463FEC1A1AAF8A006A816B /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A463FEB1A1AAF8A006A816B /* Constants.m */; };
 		9A56AE6B1A1A08C800D96C02 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A018DC71A1A05D1008476B4 /* AppDelegate.m */; };
+		9A570DEE1A98A71A00554F49 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A570DED1A98A71A00554F49 /* libsqlite3.dylib */; };
 		9A5AE4C71A8ABEA2006C5FD3 /* girl1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9A5AE4BF1A8ABEA2006C5FD3 /* girl1.jpg */; };
 		9A5AE4C81A8ABEA2006C5FD3 /* girl2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9A5AE4C01A8ABEA2006C5FD3 /* girl2.jpg */; };
 		9A5AE4C91A8ABEA2006C5FD3 /* girl3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9A5AE4C11A8ABEA2006C5FD3 /* girl3.jpg */; };
@@ -353,6 +354,7 @@
 		9A463FE71A1A8AB9006A816B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		9A463FEA1A1AAF8A006A816B /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		9A463FEB1A1AAF8A006A816B /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		9A570DED1A98A71A00554F49 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		9A5AE4BF1A8ABEA2006C5FD3 /* girl1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = girl1.jpg; sourceTree = "<group>"; };
 		9A5AE4C01A8ABEA2006C5FD3 /* girl2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = girl2.jpg; sourceTree = "<group>"; };
 		9A5AE4C11A8ABEA2006C5FD3 /* girl3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = girl3.jpg; sourceTree = "<group>"; };
@@ -607,6 +609,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A570DEE1A98A71A00554F49 /* libsqlite3.dylib in Frameworks */,
+				9AFF8E811A1A087900ACBFCA /* StoreKit.framework in Frameworks */,
+				9AFF8E7F1A1A086F00ACBFCA /* Security.framework in Frameworks */,
+				9AFF8E7D1A1A086600ACBFCA /* QuartzCore.framework in Frameworks */,
+				9A018E001A1A07F6008476B4 /* CoreLocation.framework in Frameworks */,
+				9A018E021A1A07F6008476B4 /* CFNetwork.framework in Frameworks */,
 				9AB37F441A65DE9E00B743F1 /* libMPCategoryHelpers.a in Frameworks */,
 				9A45A8891A61675600C26DA4 /* UIKit.framework in Frameworks */,
 				9AB37F421A65BA8E00B743F1 /* Accelerate.framework in Frameworks */,
@@ -615,14 +623,9 @@
 				9A018E031A1A07F6008476B4 /* AudioToolbox.framework in Frameworks */,
 				9A9190CD1A1A84F400B6D698 /* FacebookSDK.framework in Frameworks */,
 				9AFF8E831A1A088100ACBFCA /* SystemConfiguration.framework in Frameworks */,
-				9AFF8E811A1A087900ACBFCA /* StoreKit.framework in Frameworks */,
-				9AFF8E7F1A1A086F00ACBFCA /* Security.framework in Frameworks */,
-				9AFF8E7D1A1A086600ACBFCA /* QuartzCore.framework in Frameworks */,
 				9A018E071A1A083C008476B4 /* MobileCoreServices.framework in Frameworks */,
 				9A018E051A1A0823008476B4 /* libz.dylib in Frameworks */,
-				9A018E001A1A07F6008476B4 /* CoreLocation.framework in Frameworks */,
 				9A018E011A1A07F6008476B4 /* CoreGraphics.framework in Frameworks */,
-				9A018E021A1A07F6008476B4 /* CFNetwork.framework in Frameworks */,
 				9A018DF41A1A0787008476B4 /* Bolts.framework in Frameworks */,
 				9A018DF51A1A0789008476B4 /* Parse.framework in Frameworks */,
 				9A018DF61A1A078C008476B4 /* ParseFacebookUtils.framework in Frameworks */,
@@ -718,6 +721,7 @@
 		9A018DF31A1A0740008476B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A570DED1A98A71A00554F49 /* libsqlite3.dylib */,
 				9AB37F431A65DE9E00B743F1 /* libMPCategoryHelpers.a */,
 				9AB37F411A65BA8E00B743F1 /* Accelerate.framework */,
 				9AB37F3F1A65BA8600B743F1 /* CoreTelephony.framework */,
@@ -1401,6 +1405,7 @@
 					};
 					9A018DDA1A1A05D1008476B4 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 2U6VA2MR4N;
 						TestTargetID = 9A018DBE1A1A05D1008476B4;
 					};
 				};
@@ -1767,7 +1772,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: edu.jmramirez.Freyja";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: edu.jmramirez.Freyja";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1787,6 +1793,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "192ab7f8-ab4d-44ec-b5ef-6096091e9748";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1808,7 +1815,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: edu.jmramirez.Freyja";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: edu.jmramirez.Freyja";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1821,6 +1829,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "192ab7f8-ab4d-44ec-b5ef-6096091e9748";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1831,8 +1840,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: edu.jmramirez.Freyja";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: edu.jmramirez.Freyja";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Freyja",
@@ -1845,7 +1854,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "/Users/savyna/dev/mixpanel-iphone/Mixpanel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "192ab7f8-ab4d-44ec-b5ef-6096091e9748";
 			};
 			name = Debug;
 		};
@@ -1854,8 +1863,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: edu.jmramirez.Freyja";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: edu.jmramirez.Freyja";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Freyja",
@@ -1868,7 +1877,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "/Users/savyna/dev/mixpanel-iphone/Mixpanel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "192ab7f8-ab4d-44ec-b5ef-6096091e9748";
 			};
 			name = Release;
 		};
@@ -1876,6 +1885,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1887,6 +1898,7 @@
 				INFOPLIST_FILE = FreyjaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Freyja.app/Freyja";
 			};
 			name = Debug;
@@ -1895,6 +1907,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1902,6 +1916,7 @@
 				INFOPLIST_FILE = FreyjaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Freyja.app/Freyja";
 			};
 			name = Release;

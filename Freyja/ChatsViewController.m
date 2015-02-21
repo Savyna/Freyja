@@ -59,7 +59,7 @@
     self.initialLoadComplete    = NO;
     
     [self checkForNewChats];
-    self.chatsTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(checkForNewChats) userInfo:nil repeats:YES];
+    self.chatsTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(checkForNewChats) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,10 +107,18 @@
         [chat saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             
             [self.chats addObject:chat];
+//            NSLog(@"%@", chat);
             [JSMessageSoundEffect playMessageSentSound];
             [self.tableView reloadData];
             [self finishSend];
             [self scrollToBottomAnimated:YES];
+            
+            PFQuery *pushQuery = [PFInstallation query];
+            
+            [pushQuery whereKey:@"deviceType" equalTo:@"ios"];
+            // Send push notification to query
+            [PFPush sendPushMessageToQueryInBackground:pushQuery
+                                           withMessage:[chat objectForKey:@"text"]];
         }];
         
     }
@@ -217,6 +225,7 @@
             if ( self.initialLoadComplete == NO || oldChatCount != [objects count] ) {
                 
                 self.chats = [objects mutableCopy];
+                
                 [self.tableView reloadData];
                 
                 if ( self.initialLoadComplete == YES ) {

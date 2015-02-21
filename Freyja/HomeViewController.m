@@ -65,7 +65,7 @@
     // Query to the Photo Class in Parse
     PFQuery *query = [PFQuery queryWithClassName:kPhotoClassKey];
     [query whereKey:kPhotoUserKey notEqualTo:[PFUser currentUser]];
-    
+    [query orderByDescending:@"createdAt"];
     [query includeKey:kPhotoUserKey];
 
     // Asynchronous access Parse API and get the items in a background thread
